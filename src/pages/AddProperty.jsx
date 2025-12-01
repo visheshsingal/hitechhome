@@ -31,8 +31,8 @@ const AddProperty = ({ setCurrentPage }) => {
   });
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
-  const [videoFile, setVideoFile] = useState(null);
-  const [videoPreview, setVideoPreview] = useState(null);
+  const [videoFiles, setVideoFiles] = useState([]);
+  const [videoPreviews, setVideoPreviews] = useState([]);
   const [isFeaturedLocation, setIsFeaturedLocation] = useState(false);
   const [existingFeaturedLocations, setExistingFeaturedLocations] = useState([]);
   const [existingCuratedProperties, setExistingCuratedProperties] = useState([]);
@@ -78,28 +78,28 @@ const AddProperty = ({ setCurrentPage }) => {
   };
 
   const handleVideoChange = (e) => {
-const files = Array.from(e.target.files);
+    const files = Array.from(e.target.files || []);
 
-// Agar 2 se zyada select kare to rok de
-if (videoFiles.length + files.length > 2) {
-  setError("Maximum 2 videos allowed");
-  return;
-}
-
-    if (!file) return;
-
-    if (file.size > 50 * 1024 * 1024) {
-      setError("Video must be less than 50MB");
+    if (videoFiles.length + files.length > 2) {
+      setError("Maximum 2 videos allowed");
       return;
     }
 
-    setVideoFile(file);
+    const invalidFiles = files.filter((file) => file.size > 50 * 1024 * 1024);
+    if (invalidFiles.length > 0) {
+      setError("Each video must be less than 50MB");
+      return;
+    }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setVideoPreview(reader.result);
-    };
-    reader.readAsDataURL(file);
+    setVideoFiles((prev) => [...prev, ...files]);
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setVideoPreviews((prev) => [...prev, reader.result]);
+      };
+      reader.readAsDataURL(file);
+    });
 
     setError("");
   };
@@ -138,8 +138,8 @@ if (videoFiles.length + files.length > 2) {
   };
 
   const removeVideo = () => {
-    setVideoFile(null);
-    setVideoPreview(null);
+    setVideoFiles([]);
+    setVideoPreviews([]);
   };
 
   const handleSubmit = async (e) => {
@@ -166,10 +166,9 @@ if (videoFiles.length + files.length > 2) {
         formDataToSend.append("images", file);
       });
 
-
-videoFiles.forEach((file) => {
-  formDataToSend.append("videos", file);
-});
+      videoFiles.forEach((file) => {
+        formDataToSend.append("videos", file);
+      });
 
       // Featured location fields
       if (isFeaturedLocation) {
@@ -320,7 +319,6 @@ videoFiles.forEach((file) => {
                       className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl text-base focus:border-red-600 focus:ring-4 focus:ring-red-100 outline-none transition-all"
                     />
                   </div>
-H
                   <div className="col-span-2">
                     <label className="flex items-center gap-2 text-base font-semibold text-gray-700 mb-3">
                       <MapPin size={18} className="text-blue-600" />
@@ -505,13 +503,13 @@ H
                       type="button"
                       onClick={() => document.getElementById("video").click()}
                       className={`w-full px-6 py-4 ${
-                        videoFile
+                        videoFiles.length > 0
                           ? "bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
                           : "bg-gradient-to-r from-red-400 to-red-400 hover:from-red-400 hover:to-red-700"
                       } text-white rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5`}
                     >
                       <Video size={20} />
-                      {videoFile ? "Video Uploaded ✓" : "Upload Video"}
+                      {videoFiles.length > 0 ? `${videoFiles.length} video(s) ready` : "Upload Video(s)"}
                     </button>
                     <input
                       id="video"
@@ -525,18 +523,26 @@ H
                       MP4, MOV up to 50MB
                     </p>
 
-                    {videoPreview && (
-                      <div className="mt-4 flex items-center justify-between p-3 bg-gray-100 rounded-xl">
-                        <span className="text-sm text-gray-700 font-medium">
-                          Video ready
-                        </span>
-                        <button
-                          type="button"
-                          onClick={removeVideo}
-                          className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                        >
-                          Remove
-                        </button>
+                    {videoPreviews.length > 0 && (
+                      <div className="mt-4 grid grid-cols-1 gap-3">
+                        {videoPreviews.map((preview, idx) => (
+                          <div key={idx} className="flex items-center justify-between p-3 bg-gray-100 rounded-xl">
+                            <div className="flex items-center gap-3">
+                              <video src={preview} className="w-40 h-24 object-cover rounded-md" controls />
+                              <span className="text-sm text-gray-700 font-medium">Video {idx + 1}</span>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setVideoFiles((prev) => prev.filter((_, i) => i !== idx));
+                                setVideoPreviews((prev) => prev.filter((_, i) => i !== idx));
+                              }}
+                              className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>

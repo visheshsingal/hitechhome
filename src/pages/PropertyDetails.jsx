@@ -213,14 +213,14 @@ const PropertyDetails = ({ property, setCurrentPage }) => {
       {/* Gallery with Borders */}
       <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-3 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-3 md:gap-4">
             {/* Main Image/Video */}
             <div className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl border-4 border-indigo-200 shadow-xl group bg-gray-100">
               {property.video?.url ? (
                 <video
                   src={property.video.url}
                   controls
-                  className="w-full h-full object-cover min-h-[400px] md:min-h-[600px]"
+                  className="w-full h-auto md:h-full md:min-h-[600px] object-cover"
                 />
               ) : (
                 <img
@@ -229,7 +229,7 @@ const PropertyDetails = ({ property, setCurrentPage }) => {
                     "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800"
                   }
                   alt={property.title}
-                  className="w-full h-full object-cover min-h-[400px] md:min-h-[600px] group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-auto md:h-full md:min-h-[600px] object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               )}
               {/* Featured Badge */}
@@ -240,7 +240,7 @@ const PropertyDetails = ({ property, setCurrentPage }) => {
             </div>
 
             {/* Additional Images with Borders */}
-            {property.images?.slice(1, 5).map((image, i) => (
+            {property.images?.slice(1).map((image, i) => (
               <div
                 key={i}
                 className="relative overflow-hidden rounded-xl border-3 border-indigo-200 shadow-lg group bg-gray-100 h-[180px] md:h-[290px]"

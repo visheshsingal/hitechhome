@@ -45,9 +45,9 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
   const [featuredPropertyFile, setFeaturedPropertyFile] = useState(null);
   const [featuredPropertyPreview, setFeaturedPropertyPreview] = useState(null);
   const [removeFeatured, setRemoveFeatured] = useState(false);
-  const [existingVideo, setExistingVideo] = useState(null);
-  const [videoFile, setVideoFile] = useState(null);
-  const [videoPreview, setVideoPreview] = useState(null);
+  const [existingVideos, setExistingVideos] = useState([]);
+  const [videoFiles, setVideoFiles] = useState([]);
+  const [videoPreviews, setVideoPreviews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
@@ -71,7 +71,14 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
         status: property.status,
       });
       setExistingImages(property.images || []);
-      setExistingVideo(property.video || null);
+      // Normalize existing video(s) to an array
+      if (Array.isArray(property.video)) {
+        setExistingVideos(property.video || []);
+      } else if (property.video) {
+        setExistingVideos([property.video]);
+      } else {
+        setExistingVideos([]);
+      }
       setExistingCurated(property.curatedProperty || null);
       setExistingFeatured(property.featuredLocation || null);
       // Pre-select any manual curated/featured titles if present
@@ -112,8 +119,8 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
 
-    if (existingImages.length + imageFiles.length + files.length > 5) {
-      setError("Maximum 5 images allowed in total");
+    if (existingImages.length + imageFiles.length + files.length > 15) {
+      setError("Maximum 15 images allowed in total");
       return;
     }
 
@@ -137,22 +144,28 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
   };
 
   const handleVideoChange = (e) => {
-    const file = e.target.files[0];
+    const files = Array.from(e.target.files || []);
 
-    if (!file) return;
-
-    if (file.size > 50 * 1024 * 1024) {
-      setError("Video must be less than 50MB");
+    if (existingVideos.length + videoFiles.length + files.length > 2) {
+      setError("Maximum 2 videos allowed in total");
       return;
     }
 
-    setVideoFile(file);
+    const invalidFiles = files.filter((file) => file.size > 50 * 1024 * 1024);
+    if (invalidFiles.length > 0) {
+      setError("Each video must be less than 50MB");
+      return;
+    }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setVideoPreview(reader.result);
-    };
-    reader.readAsDataURL(file);
+    setVideoFiles((prev) => [...prev, ...files]);
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setVideoPreviews((prev) => [...prev, reader.result]);
+      };
+      reader.readAsDataURL(file);
+    });
 
     setError("");
   };
@@ -166,8 +179,8 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
     setImagePreviews((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const removeExistingVideo = () => {
-    setExistingVideo(null);
+  const removeExistingVideo = (index) => {
+    setExistingVideos((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleCuratedPropertyFile = (e) => {
@@ -202,9 +215,9 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
     setError("");
   };
 
-  const removeNewVideo = () => {
-    setVideoFile(null);
-    setVideoPreview(null);
+  const removeNewVideo = (index) => {
+    setVideoFiles((prev) => prev.filter((_, i) => i !== index));
+    setVideoPreviews((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e) => {
@@ -233,9 +246,18 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
         formDataToSend.append("images", file);
       });
 
-      // Add new video only
-      if (videoFile) {
-        formDataToSend.append("video", videoFile);
+      // Add new videos (up to 2 total)
+      videoFiles.forEach((file) => {
+        formDataToSend.append("videos", file);
+      });
+
+      // If existingVideos were modified (some removed), send the remaining list so backend can keep them.
+      if (existingVideos && existingVideos.length > 0) {
+        try {
+          formDataToSend.append('existingVideos', JSON.stringify(existingVideos));
+        } catch (e) {
+          // ignore
+        }
       }
 
       // Curated property handling
@@ -761,14 +783,14 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
 
                     <div>
                       <label className="block text-base font-semibold text-gray-700 mb-3">
-                        Add New Images (Max {5 - existingImages.length} more)
+                        Add New Images (Max {15 - existingImages.length} more)
                       </label>
                       <button
                         type="button"
                         onClick={() => document.getElementById("images").click()}
-                        disabled={existingImages.length >= 5}
+                        disabled={existingImages.length >= 15}
                         className={`w-full px-6 py-4 ${
-                          existingImages.length >= 5
+                          existingImages.length >= 15
                             ? "bg-gray-400 cursor-not-allowed"
                             : "bg-gradient-to-r from-sky-400 to-sky-400 hover:from-blue-700 hover:to-blue-800"
                         } text-white rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl`}
@@ -818,20 +840,25 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
                   <div>
                     <div className="mb-4">
                       <h3 className="text-base font-semibold text-gray-700 mb-3">
-                        Current Video
+                        Current Video(s)
                       </h3>
-                      {existingVideo && existingVideo.url ? (
-                        <div className="p-3 bg-gray-100 rounded-xl flex items-center justify-between">
-                          <span className="text-sm text-gray-700 font-medium">
-                            Video exists
-                          </span>
-                          <button
-                            type="button"
-                            onClick={removeExistingVideo}
-                            className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                          >
-                            Remove
-                          </button>
+                      {existingVideos && existingVideos.length > 0 ? (
+                        <div className="space-y-3">
+                          {existingVideos.map((v, idx) => (
+                            <div key={idx} className="p-3 bg-gray-100 rounded-xl flex items-center justify-between">
+                              <div className="flex items-center gap-3">
+                                <video src={v.url || v} className="w-40 h-24 object-cover rounded-md" controls />
+                                <span className="text-sm text-gray-700 font-medium">Video {idx + 1}</span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => removeExistingVideo(idx)}
+                                className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
                         </div>
                       ) : (
                         <p className="text-sm text-gray-500">No video yet</p>
@@ -846,18 +873,19 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
                         type="button"
                         onClick={() => document.getElementById("video").click()}
                         className={`w-full px-6 py-4 ${
-                          videoFile
+                          videoFiles.length > 0
                             ? "bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
                             : "bg-gradient-to-r from-red-400 to-red-400 hover:from-red-400 hover:to-red-700"
                         } text-white rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl`}
                       >
                         <Video size={20} />
-                        {videoFile ? "New Video Uploaded ✓" : "Upload Video"}
+                        {videoFiles.length > 0 ? `${videoFiles.length} video(s) ready` : "Upload Video(s)"}
                       </button>
                       <input
                         id="video"
                         type="file"
                         accept="video/*"
+                        multiple
                         onChange={handleVideoChange}
                         className="hidden"
                       />
@@ -865,18 +893,23 @@ const EditProperty = ({ setCurrentPage, propertyId }) => {
                         MP4, MOV up to 50MB
                       </p>
 
-                      {videoPreview && (
-                        <div className="mt-4 p-3 bg-gray-100 rounded-xl flex items-center justify-between">
-                          <span className="text-sm text-gray-700 font-medium">
-                            New video ready
-                          </span>
-                          <button
-                            type="button"
-                            onClick={removeNewVideo}
-                            className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
-                          >
-                            Remove
-                          </button>
+                      {videoPreviews.length > 0 && (
+                        <div className="mt-4 grid grid-cols-1 gap-3">
+                          {videoPreviews.map((preview, idx) => (
+                            <div key={idx} className="flex items-center justify-between p-3 bg-gray-100 rounded-xl">
+                              <div className="flex items-center gap-3">
+                                <video src={preview} className="w-40 h-24 object-cover rounded-md" controls />
+                                <span className="text-sm text-gray-700 font-medium">New Video {idx + 1}</span>
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => removeNewVideo(idx)}
+                                className="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          ))}
                         </div>
                       )}
                     </div>
