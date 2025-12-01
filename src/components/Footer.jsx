@@ -3,6 +3,7 @@ import {
   Instagram,
   Linkedin,
   Twitter,
+  Youtube,
   MapPin,
   Phone,
   Mail,
@@ -23,15 +24,21 @@ export default function Footer({ setCurrentPage }) {
 
         {/* ===== BRAND SECTION ===== */}
         <div className="text-center sm:text-left">
-          <div
-            onClick={() => handleNavigate("home")}
-            className="mb-4 cursor-pointer hover:scale-[1.02] transition-all inline-block w-full sm:w-auto"
-          >
-            <img
-              src={logo}
-              alt="Hi-Tech Homes Logo"
-              className="h-24 md:h-32 w-auto object-contain mx-auto sm:mx-0"
-            />
+          <div className="mb-3 flex flex-col sm:flex-row md:flex-col md:items-start md:gap-0 sm:items-center sm:gap-4">
+            <div
+              onClick={() => handleNavigate("home")}
+              className="cursor-pointer hover:scale-[1.02] transition-all inline-block w-full sm:w-auto"
+            >
+              <img
+                src={logo}
+                alt="Hi-Tech Homes Logo"
+                className="h-28 md:h-40 w-auto object-contain mx-auto sm:mx-0"
+              />
+            </div>
+
+            <div className="mt-2 sm:mt-0 md:mt-2 text-gray-300 text-sm font-semibold">
+              Serving since 2000
+            </div>
           </div>
 
           <p
@@ -200,6 +207,15 @@ export default function Footer({ setCurrentPage }) {
               className="p-2.5 rounded-full border border-gray-700 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300"
             >
               <Linkedin size={18} />
+            </a>
+
+            <a
+              href="https://m.youtube.com/@hitech_homes?fbclid=PAT01DUAOVENpleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadeJuNg-spqBOoCSfXLYZRnwxSV4LXBsxckNm8_2Xvkv3FzShrhsHAjd2r-Mg_aem_KDnw6QPqgAQDWTHH1-Gtog"
+              target="_blank"
+              rel="noreferrer"
+              className="p-2.5 rounded-full border border-gray-700 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300"
+            >
+              <Youtube size={18} />
             </a>
           </div>
         </div>

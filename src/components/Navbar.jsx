@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
 import logo from "../assets/logo1.png";
 import { UserAuthContext } from "../context/UserAuthContext";
@@ -51,6 +51,24 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               />
             </div>
 
+            {/* ===== MOBILE CENTER SOCIAL ICONS (left: logo, center: socials, right: menu) ===== */}
+            <div className="flex-1 flex items-center justify-center md:hidden">
+              <div className="flex items-center gap-3">
+                <a href="https://www.facebook.com/100064200993187" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Facebook size={18} />
+                </a>
+                <a href="https://www.instagram.com/hitechhomesluxury?igsh=MWljd21xOTZ1aHkwcA==" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Instagram size={18} />
+                </a>
+                <a href="https://www.linkedin.com/company/hitech-homesgurgaon/" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Linkedin size={18} />
+                </a>
+                <a href="https://m.youtube.com/@hitech_homes" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-red-600 transition-colors">
+                  <Youtube size={18} />
+                </a>
+              </div>
+            </div>
+
             {/* ===== DESKTOP NAVIGATION ===== */}
             <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
               {navLinks.map((link) => {
@@ -80,8 +98,22 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               })}
             </div>
 
-            {/* ===== RIGHT SIDE BUTTONS ===== */}
+            {/* ===== RIGHT SIDE BUTTONS (with small social icons) ===== */}
             <div className="hidden md:flex items-center space-x-4">
+              <div className="hidden md:flex items-center space-x-2 mr-2">
+                <a href="https://www.facebook.com/100064200993187" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Facebook size={16} />
+                </a>
+                <a href="https://www.instagram.com/hitechhomesluxury?igsh=MWljd21xOTZ1aHkwcA==" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Instagram size={16} />
+                </a>
+                <a href="https://www.linkedin.com/company/hitech-homesgurgaon/" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-indigo-600 transition-colors">
+                  <Linkedin size={16} />
+                </a>
+                <a href="https://m.youtube.com/@hitech_homes" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-gray-600 hover:text-red-600 transition-colors">
+                  <Youtube size={16} />
+                </a>
+              </div>
               {user ? (
                 <>
                   <button
@@ -222,6 +254,9 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                   Login
                 </button>
               )}
+
+              {/* Mobile social links - centered and styled like footer for visibility */}
+              {/* mobile social icons removed from dropdown - displayed inline in header for mobile */}
             </div>
           </div>
         )}
