@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Mail,
   Phone,
@@ -22,11 +22,15 @@ const AdminEnquiries = ({ setCurrentPage }) => {
     fetchEnquiries,
     updateEnquiryStatus,
     deleteEnquiry,
+    addEnquiryNote,
   } = useContext(EnquiryContext);
 
   const [filter, setFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [actionLoading, setActionLoading] = useState(null);
+  const [openNotesFor, setOpenNotesFor] = useState(null);
+  const [newNoteText, setNewNoteText] = useState("");
+  const [addingNoteFor, setAddingNoteFor] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -215,6 +219,9 @@ const AdminEnquiries = ({ setCurrentPage }) => {
                       Status
                     </th>
                     <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                      Admin Notes
+                    </th>
+                    <th className="px-6 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
                       Date
                     </th>
                     <th className="px-6 py-4 text-right text-xs font-bold text-gray-700 uppercase tracking-wider">
@@ -224,8 +231,8 @@ const AdminEnquiries = ({ setCurrentPage }) => {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {filteredEnquiries.map((enquiry) => (
+                    <React.Fragment key={enquiry._id}>
                     <tr
-                      key={enquiry._id}
                       className="hover:bg-blue-50 transition-colors"
                     >
                       <td className="px-6 py-4">
@@ -289,6 +296,14 @@ const AdminEnquiries = ({ setCurrentPage }) => {
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex justify-end gap-2">
+                          {/* Notes toggle button */}
+                          <button
+                            onClick={() => setOpenNotesFor(openNotesFor === enquiry._id ? null : enquiry._id)}
+                            className="p-2 text-indigo-600 hover:bg-indigo-100 rounded-lg transition-all duration-200"
+                            title="View / Add notes"
+                          >
+                            Notes
+                          </button>
                           {enquiry.status === "pending" && (
                             <button
                               onClick={() =>
@@ -324,6 +339,74 @@ const AdminEnquiries = ({ setCurrentPage }) => {
                         </div>
                       </td>
                     </tr>
+
+                    {/* Expandable notes row */}
+                    {openNotesFor === enquiry._id && (
+                      <tr key={enquiry._id + "-notes"} className="bg-gray-50">
+                        <td colSpan={7} className="px-6 py-4">
+                          <div className="space-y-3">
+                            <div>
+                              <h4 className="font-semibold text-gray-800 mb-2">Admin Notes</h4>
+                              {(!enquiry.adminNotes || enquiry.adminNotes.length === 0) ? (
+                                <p className="text-sm text-gray-500">No notes yet.</p>
+                              ) : (
+                                <ul className="space-y-2">
+                                  {enquiry.adminNotes.map((note, i) => (
+                                    <li key={i} className="bg-white border rounded-lg p-3">
+                                      <div className="flex items-start justify-between gap-4">
+                                        <div>
+                                          <p className="text-sm text-gray-800">{note.text}</p>
+                                          <p className="text-xs text-gray-500 mt-2">By {note.admin?.name || 'Admin'} · {new Date(note.createdAt).toLocaleString()}</p>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+
+                            <div className="flex gap-2">
+                              <textarea
+                                value={newNoteText}
+                                onChange={(e) => setNewNoteText(e.target.value)}
+                                placeholder="Add a private admin note..."
+                                className="flex-1 border rounded-lg p-3 resize-none focus:ring-2 focus:ring-indigo-500 outline-none"
+                                rows={3}
+                              />
+                              <div className="flex flex-col gap-2">
+                                <button
+                                  onClick={async () => {
+                                    if (!newNoteText.trim()) return alert('Please enter a note');
+                                    setAddingNoteFor(enquiry._id);
+                                    try {
+                                      await addEnquiryNote(enquiry._id, newNoteText.trim());
+                                      setNewNoteText('');
+                                      // refetch list to update reliably
+                                      fetchEnquiries(filter === 'all' ? '' : filter);
+                                    } catch (error) {
+                                      alert('Failed to add note: ' + (error.response?.data?.message || error.message));
+                                    } finally {
+                                      setAddingNoteFor(null);
+                                    }
+                                  }}
+                                  disabled={addingNoteFor === enquiry._id}
+                                  className="px-4 py-2 bg-indigo-600 text-white rounded-lg shadow hover:bg-indigo-700 disabled:opacity-50"
+                                >
+                                  {addingNoteFor === enquiry._id ? 'Adding...' : 'Add Note'}
+                                </button>
+                                <button
+                                  onClick={() => { setOpenNotesFor(null); setNewNoteText(''); }}
+                                  className="px-4 py-2 border rounded-lg text-gray-700 hover:bg-gray-100"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>

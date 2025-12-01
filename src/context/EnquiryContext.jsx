@@ -106,6 +106,23 @@ export const EnquiryProvider = ({ children }) => {
   };
 
   /**
+   * Add an admin note to an enquiry (admin)
+   */
+  const addEnquiryNote = async (id, text) => {
+    try {
+      const response = await api.put(`/enquiries/${id}/notes`, { text });
+      if (response.data.success) {
+        // Update local state for the specific enquiry
+        setEnquiries(enquiries.map(enq => enq._id === id ? response.data.data : enq));
+        return response.data.data;
+      }
+    } catch (error) {
+      console.error('❌ Error adding enquiry note:', error);
+      throw error;
+    }
+  };
+
+  /**
    * Get recent enquiries (admin)
    */
   const fetchRecentEnquiries = async () => {
@@ -139,6 +156,7 @@ export const EnquiryProvider = ({ children }) => {
         submitEnquiry,
         updateEnquiryStatus,
         deleteEnquiry,
+        addEnquiryNote,
         fetchRecentEnquiries
       }}
     >
