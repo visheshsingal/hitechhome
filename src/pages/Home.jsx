@@ -415,7 +415,7 @@ const propertiesRef = useRef(null);
 
           <p className="text-xs sm:text-sm md:text-lg text-white/95 max-w-3xl mx-auto drop-shadow-lg font-normal leading-relaxed px-2">
             From new launches to ready-to-move homes, explore curated
-            residential and commercial projects with zero brokerage and
+            residential projects with zero brokerage and
             complete advisory support.
           </p>
 
@@ -431,12 +431,12 @@ const propertiesRef = useRef(null);
                 className="group-hover:translate-x-1 transition-transform"
               />
             </button>
-            <button
+            {/* <button
               onClick={() => { setCurrentPage("listings"); try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {} }}
               className="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 border-2 sm:border-3 border-white/90 text-white font-bold rounded-full hover:bg-white hover:text-indigo-600 transition-all duration-300 backdrop-blur-sm"
             >
               Browse Commercial & More
-            </button>
+            </button> */}
             <button
               onClick={() => setCurrentPage("contact")}
               className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white/10 border border-white/40 text-sm sm:text-base font-semibold rounded-full hover:bg-white hover:text-indigo-700 transition-all duration-300 backdrop-blur-md"
@@ -446,7 +446,7 @@ const propertiesRef = useRef(null);
           </div>
 
           {/* Hero bottom mini-features */}
-          <div className="mt-4 sm:mt-6 flex flex-wrap justify-center gap-3 sm:gap-4">
+          {/* <div className="mt-4 sm:mt-6 flex flex-wrap justify-center gap-3 sm:gap-4">
             {[
               "5000+ Happy Customers",
               "30+ Developers · 100+ Projects",
@@ -461,7 +461,7 @@ const propertiesRef = useRef(null);
                 <span>{item}</span>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
