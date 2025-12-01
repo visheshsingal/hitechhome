@@ -22,6 +22,7 @@ import {
 import { PropertyContext } from "../context/PropertyContext";
 import Loader from "../components/Loader";
 import Counter from "../components/Counter";
+import Contact from "./Contact";
 
 
 
@@ -1302,57 +1303,10 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
         </div>
       </section>
 
-      {/* ===== QUICK CONTACT SECTION (ABOVE FOOTER) (No Change) ===== */}
-      <section className="py-10 md:py-14 bg-white border-t border-indigo-100 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center">
-          <div className="md:col-span-2 space-y-2">
-            <h2
-              className="text-xl sm:text-2xl font-extrabold text-gray-900"
-              style={{ fontFamily: "'Poppins', sans-serif" }}
-            >
-              Need help choosing the right project?
-            </h2>
-            <p className="text-sm sm:text-base text-gray-600 max-w-xl">
-              Speak directly with our advisory team for personalized
-              recommendations, latest offers and project comparisons.
-            </p>
-            <div className="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold text-gray-800">Call Us</span>
-                <a
-                  href="tel:+911234567890"
-                  className="text-indigo-600 font-medium hover:underline"
-                >
-                  +91-12345-67890
-                </a>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold text-gray-800">Email</span>
-                <a
-                  href="mailto:info@example.com"
-                  className="text-indigo-600 font-medium hover:underline break-all"
-                >
-                  info@example.com
-                </a>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="font-semibold text-gray-800">Office</span>
-                <p className="text-gray-600">
-                  Sector 00, Gurgaon, Haryana, India
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex md:justify-end">
-            <button
-              onClick={() => setCurrentPage("contact")}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-rose-500 text-white font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-            >
-              Go to Contact Page
-              <ChevronRight size={18} />
-            </button>
-          </div>
+      {/* Contact page inserted in place of the quick-contact section */}
+      <section className="bg-white border-t border-indigo-100 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <Contact setCurrentPage={setCurrentPage} />
         </div>
       </section>
 
