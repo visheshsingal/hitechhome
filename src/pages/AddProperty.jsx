@@ -53,8 +53,8 @@ const AddProperty = ({ setCurrentPage }) => {
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
 
-    if (imageFiles.length + files.length > 5) {
-      setError("Maximum 5 images allowed");
+    if (imageFiles.length + files.length > 15) {
+      setError("Maximum 15 images allowed");
       return;
     }
 
@@ -78,7 +78,13 @@ const AddProperty = ({ setCurrentPage }) => {
   };
 
   const handleVideoChange = (e) => {
-    const file = e.target.files[0];
+const files = Array.from(e.target.files);
+
+// Agar 2 se zyada select kare to rok de
+if (videoFiles.length + files.length > 2) {
+  setError("Maximum 2 videos allowed");
+  return;
+}
 
     if (!file) return;
 
@@ -160,9 +166,10 @@ const AddProperty = ({ setCurrentPage }) => {
         formDataToSend.append("images", file);
       });
 
-      if (videoFile) {
-        formDataToSend.append("video", videoFile);
-      }
+
+videoFiles.forEach((file) => {
+  formDataToSend.append("videos", file);
+});
 
       // Featured location fields
       if (isFeaturedLocation) {
@@ -442,7 +449,7 @@ H
                   {/* Images Upload */}
                   <div>
                     <label className="block text-base font-semibold text-gray-700 mb-3">
-                      Property Images (Max 5)
+                      Property Images 
                     </label>
                     <button
                       type="button"
@@ -509,7 +516,8 @@ H
                     <input
                       id="video"
                       type="file"
-                      accept="video/*"
+                      accept="video/*" 
+                      multiple
                       onChange={handleVideoChange}
                       className="hidden"
                     />

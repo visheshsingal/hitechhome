@@ -289,8 +289,12 @@ const propertiesRef = useRef(null);
   const featuredProperties = (properties || [])
     .filter((property) => property.featured)
 
-  const residentialProjects = (properties || []).filter((property) => !property.featured).slice(0, 3);
+// Purana (bug wala)
+// const residentialProjects = (properties || []).filter((property) => !property.featured).slice(0, 3);
 
+// Naya (sahi wala)
+const residentialProjects = (properties || []).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 4);
+  
   const handlePrevCurated = () => {
     setCuratedIndex((prev) =>
       prev === 0 ? curatedCollections.length - 1 : prev - 1
@@ -619,96 +623,227 @@ const propertiesRef = useRef(null);
         </div>
       </section>
 
-      {/* ===== RESIDENTIAL PROJECTS (No Change) ===== */}
-      {residentialProjects.length > 0 && (
-        <section className="py-12 md:py-20 bg-gradient-to-b from-indigo-50 via-white to-purple-50 relative overflow-hidden">
-          <div className="absolute top-10 right-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-rose-200 rounded-full blur-3xl opacity-50"></div>
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 md:mb-10">
-              <div>
-                <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wide uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
-                  <HomeIcon size={16} />
-                  Residential Projects
-                </p>
-                <h2
-                  className="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  Handpicked homes for every lifestyle.
-                </h2>
-                <p className="text-gray-600 text-sm sm:text-base max-w-xl mt-1">
-                  Explore a snapshot of our latest residential projects. View
-                  all listings for more options across Gurgaon.
-                </p>
-              </div>
-              <button
-                onClick={() => { setCurrentPage("listings"); try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {} }}
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-indigo-400/60 hover:scale-105 transition-all duration-300"
-              >
-                View All Residential
-                <ChevronRight size={18} />
-              </button>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-              {residentialProjects.map((property, idx) => (
-                <article
-                  key={property._id}
-                  onClick={() => {
-                    setSelectedProperty(property);
-                    setCurrentPage("property-details");
-                    try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {}
-                  }}
-                  className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2 cursor-pointer border border-indigo-100"
-                  style={animateCards ? { animationDelay: `${idx * 120}ms` } : {}}
-                >
-                  <div className="relative h-40 sm:h-48 overflow-hidden">
-                    <img
-                      src={
-                        property.images?.[0]?.url ||
-                        property.images?.[0] ||
-                        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600"
-                      }
-                      alt={property.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                    <div className="absolute bottom-3 left-3">
-                      <span className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
-                        <MapPin size={12} />
-                        {property.city}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-4 sm:p-5 text-left space-y-2">
-                    <h3
-                      className="text-sm sm:text-base font-bold text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}
-                    >
-                      {property.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm font-semibold text-indigo-700">
-                      ₹{property.price?.toLocaleString("en-IN")}
-                    </p>
-                    <div className="flex items-center justify-between text-xs sm:text-sm text-gray-600 bg-indigo-50 rounded-xl px-3 py-2 mt-1">
-                      <span className="flex items-center gap-1">
-                        <Bed size={14} /> {property.bhk} BHK
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Bath size={14} /> {property.bathrooms || 2}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Square size={14} /> {property.area || 1200} sqft
-                      </span>
-                    </div>
-                  </div>
-                </article>
-              ))}
+
+ <section className="py-12 md:py-20 bg-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-100 to-indigo-100 px-4 py-2 rounded-full mb-4">
+              <Sparkles size={16} className="text-rose-600" />
+              <p className="text-rose-700 font-bold uppercase tracking-wider text-sm">
+                Premium Selection
+              </p>
             </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-rose-600 to-indigo-600 bg-clip-text text-transparent" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              Featured Properties
+            </h2>
+            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
+             Check out our newest properties.
+            </p>
           </div>
-        </section>
-      )}
+
+          {loading ? (
+            <div className="flex justify-center py-20"><Loader /></div>
+          ) : featuredProperties.length === 0 ? (
+            <p className="text-center text-gray-500 py-12">No featured properties available</p>
+          ) : (
+            <>
+              {/* Desktop: Horizontal Slider with Arrows (Same Card Design) */}
+              <div className="hidden md:block relative">
+                <div 
+                  ref={propertiesRef}
+                  className="overflow-x-auto scrollbar-hide scroll-smooth flex gap-8 py-6"
+                  style={{ scrollSnapType: 'x mandatory' }}
+                >
+                  {featuredProperties.map((property, idx) => (
+                    <article
+                      key={property._id}
+                      onClick={() => {
+                        setSelectedProperty(property);
+                        setCurrentPage("property-details");
+                        window.scrollTo({ top: 0 });
+                      }}
+                      className="flex-shrink-0 w-96 scroll-snap-align-start group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-3 cursor-pointer border-2 border-transparent hover:border-indigo-200"
+                      style={{ animationDelay: `${idx * 150}ms` }}
+                    >
+                      <div className="relative h-64 overflow-hidden">
+                        <img
+                          src={property.images?.[0]?.url || property.images?.[0] || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600"}
+                          alt={property.title}
+                          className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                        {/* Featured Badge */}
+                        <div className="absolute top-4 right-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full font-bold text-xs shadow-2xl flex items-center gap-1 animate-pulse">
+                          <Sparkles size={12} />
+                          Featured
+                        </div>
+
+                        {/* Price on Hover */}
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                          <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full">
+                            <span className="text-indigo-600 font-bold text-lg">
+                              ₹{property.price?.toLocaleString("en-IN")}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="p-6 text-left">
+                        <div className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent mb-2">
+                          ₹{property.price?.toLocaleString("en-IN")}
+                        </div>
+
+                        <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                          {property.title}
+                        </h3>
+
+                        <div className="flex items-center text-gray-500 mb-4 text-sm">
+                          <MapPin size={14} className="mr-1 text-rose-500" />
+                          <span className="font-semibold">{property.city}</span>
+                        </div>
+
+                        <div className="flex justify-between items-center gap-3 text-gray-700 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-100">
+                          <div className="flex flex-col items-center">
+                            <div className="bg-indigo-100 p-2 rounded-lg mb-1">
+                              <Bed size={16} className="text-indigo-600" />
+                            </div>
+                            <span className="text-xs font-bold">{property.bhk} BHK</span>
+                          </div>
+                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-indigo-100 p-2 rounded-lg mb-1">
+                              <Bath size={16} className="text-indigo-600" />
+                            </div>
+                            <span className="text-xs font-bold">{property.bathrooms || 2}</span>
+                          </div>
+                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-indigo-100 p-2 rounded-lg mb-1">
+                              <Square size={16} className="text-indigo-600" />
+                            </div>
+                            <span className="text-xs font-bold">{property.area || 1200} sqft</span>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                {/* Arrows */}
+                <button
+                  onClick={() => propertiesRef.current.scrollBy({ left: -420, behavior: 'smooth' })}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-2xl rounded-full p-4 z-10 transition-all backdrop-blur"
+                >
+                  ←
+                </button>
+                <button
+                  onClick={() => propertiesRef.current.scrollBy({ left: 420, behavior: 'smooth' })}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-2xl rounded-full p-4 z-10 transition-all backdrop-blur"
+                >
+                  →
+                </button>
+              </div>
+
+              {/* Mobile: Same Old Snap Slider (No Change in Design) */}
+              <div className="md:hidden">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {featuredProperties.map((property, idx) => (
+                    <article
+                      key={property._id}
+                      onClick={() => {
+                        setSelectedProperty(property);
+                        setCurrentPage("property-details");
+                        window.scrollTo({ top: 0 });
+                      }}
+                      className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-3 cursor-pointer border-2 border-transparent hover:border-indigo-200 animate-fade-in"
+                      style={{ animationDelay: `${idx * 150}ms` }}
+                    >
+                      {/* Same exact card design as before */}
+                      <div className="relative h-56 overflow-hidden">
+                        <img
+                          src={property.images?.[0]?.url || property.images?.[0]}
+                          alt={property.title}
+                          className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="absolute top-4 right-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full font-bold text-xs shadow-2xl flex items-center gap-1 animate-pulse">
+                          <Sparkles size={12} />
+                          Featured
+                        </div>
+                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
+                          <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full">
+                            <span className="text-indigo-600 font-bold text-lg">
+                              ₹{property.price?.toLocaleString("en-IN")}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-6 text-left">
+                        <div className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent mb-2">
+                          ₹{property.price?.toLocaleString("en-IN")}
+                        </div>
+                        <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                          {property.title}
+                        </h3>
+                        <div className="flex items-center text-gray-500 mb-4 text-sm">
+                          <MapPin size={14} className="mr-1 text-rose-500" />
+                          <span className="font-semibold">{property.city}</span>
+                        </div>
+                        <div className="flex justify-between items-center gap-3 text-gray-700 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-100">
+                          <div className="flex flex-col items-center">
+                            <div className="bg-indigo-100 p-2 rounded-lg mb-1"><Bed size={16} className="text-indigo-600" /></div>
+                            <span className="text-xs font-bold">{property.bhk} BHK</span>
+                          </div>
+                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-indigo-100 p-2 rounded-lg mb-1"><Bath size={16} className="text-indigo-600" /></div>
+                            <span className="text-xs font-bold">{property.bathrooms || 2}</span>
+                          </div>
+                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
+                          <div className="flex flex-col items-center">
+                            <div className="bg-indigo-100 p-2 rounded-lg mb-1"><Square size={16} className="text-indigo-600" /></div>
+                            <span className="text-xs font-bold">{property.area || 1200} sqft</span>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          <div className="text-center mt-12">
+            <button
+              onClick={() => { setCurrentPage("listings"); window.scrollTo({ top: 0 }); }}
+              className="px-10 py-4 bg-gradient-to-r from-indigo-600 to-rose-600 text-white font-bold text-lg rounded-full shadow-xl hover:scale-105 transition-all"
+            >
+              View All Properties
+            </button>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {/* ===== RESIDENTIAL PROJECTS (No Change) ===== */}
+     
 
       {/* ===== CURATED COLLECTIONS – 4 SLIDE CAROUSEL LIKE IMAGE (No Change) ===== */}
           {/* ===== CURATED COLLECTIONS – MOBILE SNAP + DESKTOP SCROLLABLE WITH ARROWS ===== */}
@@ -903,206 +1038,116 @@ const propertiesRef = useRef(null);
       {/* ===== FEATURED PROPERTIES (No Change) ===== */}
             {/* ===== FEATURED PROPERTIES – SLIDER ON DESKTOP + MOBILE SNAP ===== */}
           {/* ===== FEATURED PROPERTIES – ONLY SLIDER CHANGE, DESIGN SAME AS BEFORE ===== */}
-      <section className="py-12 md:py-20 bg-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-100 to-indigo-100 px-4 py-2 rounded-full mb-4">
-              <Sparkles size={16} className="text-rose-600" />
-              <p className="text-rose-700 font-bold uppercase tracking-wider text-sm">
-                Premium Selection
-              </p>
+
+
+ {residentialProjects.length > 0 && (
+        <section className="py-12 md:py-20 bg-gradient-to-b from-indigo-50 via-white to-purple-50 relative overflow-hidden">
+          <div className="absolute top-10 right-0 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-rose-200 rounded-full blur-3xl opacity-50"></div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div className="mb-8 md:mb-12">
+                <div>
+                <p className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wide uppercase text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+                  <HomeIcon size={16} />
+                  Residential Projects
+                </p>
+                <h2
+                  className="mt-2 text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                >
+                 Check out our newest properties.
+                </h2>
+                <p className="text-gray-600 text-sm sm:text-base max-w-xl mt-1">
+                  Explore a snapshot of our latest residential projects. View
+                  all listings for more options across Gurgaon.
+                </p>
+              </div>
+              {/* <button
+                onClick={() => { setCurrentPage("listings"); try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {} }}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-indigo-400/60 hover:scale-105 transition-all duration-300"
+              >
+                View All Residential
+                <ChevronRight size={18} />
+              </button> */}
             </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-rose-600 to-indigo-600 bg-clip-text text-transparent" style={{ fontFamily: "'Poppins', sans-serif" }}>
-              Featured Properties
-            </h2>
-            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-              Discover our handpicked selection of premium homes that redefine luxury living.
-            </p>
-          </div>
 
-          {loading ? (
-            <div className="flex justify-center py-20"><Loader /></div>
-          ) : featuredProperties.length === 0 ? (
-            <p className="text-center text-gray-500 py-12">No featured properties available</p>
-          ) : (
-            <>
-              {/* Desktop: Horizontal Slider with Arrows (Same Card Design) */}
-              <div className="hidden md:block relative">
-                <div 
-                  ref={propertiesRef}
-                  className="overflow-x-auto scrollbar-hide scroll-smooth flex gap-8 py-6"
-                  style={{ scrollSnapType: 'x mandatory' }}
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                {residentialProjects.map((property, idx) => (
+                <article
+                  key={property._id}
+                  onClick={() => {
+                    setSelectedProperty(property);
+                    setCurrentPage("property-details");
+                    try { window.scrollTo({ top: 0, behavior: 'auto' }); } catch (e) {}
+                  }}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-2 cursor-pointer border border-indigo-100"
+                  style={animateCards ? { animationDelay: `${idx * 120}ms` } : {}}
                 >
-                  {featuredProperties.map((property, idx) => (
-                    <article
-                      key={property._id}
-                      onClick={() => {
-                        setSelectedProperty(property);
-                        setCurrentPage("property-details");
-                        window.scrollTo({ top: 0 });
-                      }}
-                      className="flex-shrink-0 w-96 scroll-snap-align-start group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-3 cursor-pointer border-2 border-transparent hover:border-indigo-200"
-                      style={{ animationDelay: `${idx * 150}ms` }}
+                  <div className="relative h-40 sm:h-48 overflow-hidden">
+                    <img
+                      src={
+                        property.images?.[0]?.url ||
+                        property.images?.[0] ||
+                        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600"
+                      }
+                      alt={property.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-3 left-3">
+                      <span className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-indigo-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        <MapPin size={12} />
+                        {property.city}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-4 sm:p-5 text-left space-y-2">
+                    <h3
+                      className="text-sm sm:text-base font-bold text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors"
+                      style={{ fontFamily: "'Poppins', sans-serif" }}
                     >
-                      <div className="relative h-64 overflow-hidden">
-                        <img
-                          src={property.images?.[0]?.url || property.images?.[0] || "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600"}
-                          alt={property.title}
-                          className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                        {/* Featured Badge */}
-                        <div className="absolute top-4 right-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full font-bold text-xs shadow-2xl flex items-center gap-1 animate-pulse">
-                          <Sparkles size={12} />
-                          Featured
-                        </div>
-
-                        {/* Price on Hover */}
-                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                          <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full">
-                            <span className="text-indigo-600 font-bold text-lg">
-                              ₹{property.price?.toLocaleString("en-IN")}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="p-6 text-left">
-                        <div className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent mb-2">
-                          ₹{property.price?.toLocaleString("en-IN")}
-                        </div>
-
-                        <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                          {property.title}
-                        </h3>
-
-                        <div className="flex items-center text-gray-500 mb-4 text-sm">
-                          <MapPin size={14} className="mr-1 text-rose-500" />
-                          <span className="font-semibold">{property.city}</span>
-                        </div>
-
-                        <div className="flex justify-between items-center gap-3 text-gray-700 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-100">
-                          <div className="flex flex-col items-center">
-                            <div className="bg-indigo-100 p-2 rounded-lg mb-1">
-                              <Bed size={16} className="text-indigo-600" />
-                            </div>
-                            <span className="text-xs font-bold">{property.bhk} BHK</span>
-                          </div>
-                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
-                          <div className="flex flex-col items-center">
-                            <div className="bg-indigo-100 p-2 rounded-lg mb-1">
-                              <Bath size={16} className="text-indigo-600" />
-                            </div>
-                            <span className="text-xs font-bold">{property.bathrooms || 2}</span>
-                          </div>
-                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
-                          <div className="flex flex-col items-center">
-                            <div className="bg-indigo-100 p-2 rounded-lg mb-1">
-                              <Square size={16} className="text-indigo-600" />
-                            </div>
-                            <span className="text-xs font-bold">{property.area || 1200} sqft</span>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-
-                {/* Arrows */}
-                <button
-                  onClick={() => propertiesRef.current.scrollBy({ left: -420, behavior: 'smooth' })}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-2xl rounded-full p-4 z-10 transition-all backdrop-blur"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={() => propertiesRef.current.scrollBy({ left: 420, behavior: 'smooth' })}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white shadow-2xl rounded-full p-4 z-10 transition-all backdrop-blur"
-                >
-                  →
-                </button>
-              </div>
-
-              {/* Mobile: Same Old Snap Slider (No Change in Design) */}
-              <div className="md:hidden">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  {featuredProperties.map((property, idx) => (
-                    <article
-                      key={property._id}
-                      onClick={() => {
-                        setSelectedProperty(property);
-                        setCurrentPage("property-details");
-                        window.scrollTo({ top: 0 });
-                      }}
-                      className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transition-all duration-500 transform hover:-translate-y-3 cursor-pointer border-2 border-transparent hover:border-indigo-200 animate-fade-in"
-                      style={{ animationDelay: `${idx * 150}ms` }}
-                    >
-                      {/* Same exact card design as before */}
-                      <div className="relative h-56 overflow-hidden">
-                        <img
-                          src={property.images?.[0]?.url || property.images?.[0]}
-                          alt={property.title}
-                          className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="absolute top-4 right-4 bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full font-bold text-xs shadow-2xl flex items-center gap-1 animate-pulse">
-                          <Sparkles size={12} />
-                          Featured
-                        </div>
-                        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
-                          <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-full">
-                            <span className="text-indigo-600 font-bold text-lg">
-                              ₹{property.price?.toLocaleString("en-IN")}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-6 text-left">
-                        <div className="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent mb-2">
-                          ₹{property.price?.toLocaleString("en-IN")}
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3 line-clamp-2 group-hover:text-indigo-600 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                          {property.title}
-                        </h3>
-                        <div className="flex items-center text-gray-500 mb-4 text-sm">
-                          <MapPin size={14} className="mr-1 text-rose-500" />
-                          <span className="font-semibold">{property.city}</span>
-                        </div>
-                        <div className="flex justify-between items-center gap-3 text-gray-700 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-100">
-                          <div className="flex flex-col items-center">
-                            <div className="bg-indigo-100 p-2 rounded-lg mb-1"><Bed size={16} className="text-indigo-600" /></div>
-                            <span className="text-xs font-bold">{property.bhk} BHK</span>
-                          </div>
-                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
-                          <div className="flex flex-col items-center">
-                            <div className="bg-indigo-100 p-2 rounded-lg mb-1"><Bath size={16} className="text-indigo-600" /></div>
-                            <span className="text-xs font-bold">{property.bathrooms || 2}</span>
-                          </div>
-                          <div className="w-px h-10 bg-gradient-to-b from-indigo-200 to-rose-200"></div>
-                          <div className="flex flex-col items-center">
-                            <div className="bg-indigo-100 p-2 rounded-lg mb-1"><Square size={16} className="text-indigo-600" /></div>
-                            <span className="text-xs font-bold">{property.area || 1200} sqft</span>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </div>
-            </>
-          )}
-
-          <div className="text-center mt-12">
-            <button
-              onClick={() => { setCurrentPage("listings"); window.scrollTo({ top: 0 }); }}
-              className="px-10 py-4 bg-gradient-to-r from-indigo-600 to-rose-600 text-white font-bold text-lg rounded-full shadow-xl hover:scale-105 transition-all"
-            >
-              View All Properties
-            </button>
+                      {property.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm font-semibold text-indigo-700">
+                      ₹{property.price?.toLocaleString("en-IN")}
+                    </p>
+                    <div className="flex items-center justify-between text-xs sm:text-sm text-gray-600 bg-indigo-50 rounded-xl px-3 py-2 mt-1">
+                      <span className="flex items-center gap-1">
+                        <Bed size={14} /> {property.bhk} BHK
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Bath size={14} /> {property.bathrooms || 2}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Square size={14} /> {property.area || 1200} sqft
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+          <div className="text-center mt-10">
+      <button
+        onClick={() => { setCurrentPage("listings"); window.scrollTo({ top: 0 }); }}
+        className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-all"
+      >
+        View All Residential
+        <ChevronRight size={20} />
+      </button>
+    </div>
+
+        </section>
+      )}
+
+
+
+
+
+
+
+
+     
 
       {/* ===== WHAT CUSTOMERS SAY (TESTIMONIALS) (No Change) ===== */}
       <section className="py-12 md:py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden px-4 sm:px-6 lg:px-8">
