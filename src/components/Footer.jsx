@@ -24,25 +24,27 @@ export default function Footer({ setCurrentPage }) {
 
         {/* ===== BRAND SECTION ===== */}
         <div className="text-center sm:text-left">
-          <div className="mb-3 flex flex-col sm:flex-row md:flex-col md:items-start md:gap-0 sm:items-center sm:gap-4">
-            <div
-              onClick={() => handleNavigate("home")}
-              className="cursor-pointer hover:scale-[1.02] transition-all inline-block w-full sm:w-auto"
-            >
-              <img
-                src={logo}
-                alt="Hi-Tech Homes Logo"
-                className="h-28 md:h-40 w-auto object-contain mx-auto sm:mx-0"
-              />
-            </div>
 
-            <div className="mt-2 sm:mt-0 md:mt-2 text-gray-300 text-sm font-semibold">
-              Serving since 2000
-            </div>
+          {/* LOGO */}
+          <div
+            onClick={() => handleNavigate("home")}
+            className="cursor-pointer hover:scale-[1.02] transition-all inline-block"
+          >
+            <img
+              src={logo}
+              alt="Hi-Tech Homes Logo"
+              className="h-44 md:h-56 w-auto object-contain mx-auto sm:mx-0"
+            />
           </div>
 
+          {/* SERVING SINCE - NO GAP */}
+          <div className="text-gray-300 text-sm font-semibold mt-0">
+            Serving since 2000
+          </div>
+
+          {/* DESCRIPTION - ALSO NO GAP */}
           <p
-            className="text-gray-400 leading-relaxed text-sm md:text-base"
+            className="text-gray-400 text-sm md:text-base leading-relaxed mt-0.5"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
             Building dreams into reality. Explore premium properties designed
@@ -63,7 +65,7 @@ export default function Footer({ setCurrentPage }) {
             className="space-y-2 md:space-y-2.5"
             style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            {[
+            {[ 
               { label: "Home", page: "home" },
               { label: "Listings", page: "listings" },
               { label: "About", page: "about" },
@@ -98,25 +100,18 @@ export default function Footer({ setCurrentPage }) {
             <li className="flex items-start gap-2 justify-center sm:justify-start">
               <MapPin size={18} className="text-indigo-400 mt-1" />
               <span>
-                D-9, Vyapar Marg, Block D, Noida Sector 3, Noida, Uttar Pradesh
-                201301
+                D-9, Vyapar Marg, Block D, Noida Sector 3, Noida, Uttar Pradesh 201301
               </span>
             </li>
 
-            {/* PHONE – FIXED CLEAN LAYOUT */}
+            {/* PHONE */}
             <li className="flex items-start gap-2 justify-center sm:justify-start">
               <Phone size={18} className="text-indigo-400 mt-1" />
               <div className="flex flex-col leading-relaxed">
-                <a
-                  href="tel:+919717988411"
-                  className="hover:text-indigo-400 transition-colors"
-                >
+                <a href="tel:+919717988411" className="hover:text-indigo-400 transition-colors">
                   +91-97179 88411
                 </a>
-                <a
-                  href="tel:+918882124222"
-                  className="hover:text-indigo-400 transition-colors"
-                >
+                <a href="tel:+918882124222" className="hover:text-indigo-400 transition-colors">
                   +91-88821 24222
                 </a>
               </div>
@@ -126,16 +121,10 @@ export default function Footer({ setCurrentPage }) {
             <li className="flex items-start gap-2 justify-center sm:justify-start">
               <Mail size={18} className="text-indigo-400 mt-1" />
               <div className="flex flex-col leading-relaxed">
-                <a
-                  href="mailto:info@anukulindia.com"
-                  className="hover:text-indigo-400 transition-colors"
-                >
+                <a href="mailto:info@anukulindia.com" className="hover:text-indigo-400 transition-colors">
                   info@anukulindia.com
                 </a>
-                <a
-                  href="mailto:mrinal@anukulindia.com"
-                  className="hover:text-indigo-400 transition-colors"
-                >
+                <a href="mailto:mrinal@anukulindia.com" className="hover:text-indigo-400 transition-colors">
                   mrinal@anukulindia.com
                 </a>
               </div>
@@ -186,16 +175,16 @@ export default function Footer({ setCurrentPage }) {
               href="https://www.facebook.com/100064200993187"
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-full border border-gray-700 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300"
+              className="p-2.5 rounded-full border border-[#1877F2] text-[#1877F2] hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300"
             >
               <Facebook size={18} />
             </a>
 
             <a
-              href="https://www.instagram.com/hitechhomesluxury?igsh=MWljd21xOTZ1aHkwcA=="
+              href="https://www.instagram.com/hitechhomesluxury"
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-full border border-gray-700 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300"
+              className="p-2.5 rounded-full border border-[#E1306C] text-[#E1306C] hover:bg-gradient-to-br hover:from-[#E1306C] hover:to-[#C13584] hover:text-white transition-all duration-300"
             >
               <Instagram size={18} />
             </a>
@@ -204,16 +193,16 @@ export default function Footer({ setCurrentPage }) {
               href="https://www.linkedin.com/company/hitech-homesgurgaon/"
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-full border border-gray-700 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all duration-300"
+              className="p-2.5 rounded-full border border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] transition-all duration-300"
             >
               <Linkedin size={18} />
             </a>
 
             <a
-              href="https://m.youtube.com/@hitech_homes?fbclid=PAT01DUAOVENpleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadeJuNg-spqBOoCSfXLYZRnwxSV4LXBsxckNm8_2Xvkv3FzShrhsHAjd2r-Mg_aem_KDnw6QPqgAQDWTHH1-Gtog"
+              href="https://m.youtube.com/@hitech_homes"
               target="_blank"
               rel="noreferrer"
-              className="p-2.5 rounded-full border border-gray-700 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300"
+              className="p-2.5 rounded-full border border-[#FF0000] text-[#FF0000] hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all duration-300"
             >
               <Youtube size={18} />
             </a>
