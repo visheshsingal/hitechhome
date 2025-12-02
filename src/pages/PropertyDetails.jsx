@@ -472,7 +472,7 @@ const PropertyDetails = ({ property, setCurrentPage }) => {
                       type: "tel",
                       value: formData.phone,
                       field: "phone",
-                      placeholder: "+91 98765 43210",
+                      placeholder: "+91-97179 88411",
                     },
                   ].map((input, idx) => (
                     <div key={idx}>
@@ -538,7 +538,7 @@ const PropertyDetails = ({ property, setCurrentPage }) => {
                     className="text-gray-700 text-sm font-semibold"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
-                    +91 98765 43210
+                    +91-97179 88411
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-lg hover:bg-rose-50 transition-colors cursor-pointer group">
@@ -549,7 +549,7 @@ const PropertyDetails = ({ property, setCurrentPage }) => {
                     className="text-gray-700 text-sm font-semibold"
                     style={{ fontFamily: "'Inter', sans-serif" }}
                   >
-                    info@hitechhomes.com
+                    info@anukulindia.com
                   </span>
                 </div>
               </div>

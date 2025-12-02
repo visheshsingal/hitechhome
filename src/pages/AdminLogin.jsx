@@ -417,8 +417,8 @@ const AdminLogin = ({ setCurrentPage }) => {
                 className="space-y-2 text-sm text-gray-300"
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
-                <li>+91 98765 43210</li>
-                <li>info@hitechhomes.com</li>
+                <li>+91-97179 88411</li>
+                <li>info@anukulindia.com</li>
                 <li>Mumbai, India</li>
               </ul>
             </div>

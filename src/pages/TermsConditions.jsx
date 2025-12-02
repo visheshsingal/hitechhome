@@ -163,10 +163,10 @@ const TermsConditions = ({ setCurrentPage }) => {
             </p>
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <p className="text-gray-700">
-                <strong>Email:</strong> info@hitechhomes.com
+                <strong>Email:</strong> info@anukulindia.com
               </p>
               <p className="text-gray-700">
-                <strong>Phone:</strong> +91 98765 43210
+                <strong>Phone:</strong> +91-97179 88411
               </p>
               <p className="text-gray-700">
                 <strong>Address:</strong> D-9, Vyapar Marg, Block D, Noida
