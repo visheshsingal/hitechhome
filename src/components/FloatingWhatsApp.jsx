@@ -4,7 +4,7 @@ export default function FloatingWhatsApp() {
   const [open, setOpen] = useState(false);
 
   // read number from env or fallback
-  const phone = import.meta.env.VITE_WHATSAPP_NUMBER || "+919876543210";
+  const phone = import.meta.env.VITE_WHATSAPP_NUMBER || "++919717988411";
   const message = encodeURIComponent(
     "Hi, I found you on Hi-Tech Homes and would like to enquire about a property."
   );
