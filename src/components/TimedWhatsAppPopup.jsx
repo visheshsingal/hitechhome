@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-export default function TimedWhatsAppPopup({ phone = "+919024939664" }) {
+export default function TimedWhatsAppPopup({ phone = "+919560002261" }) {
   const [visible, setVisible] = useState(false);
   const nameRef = useRef(null);
   const phoneRef = useRef(null);
