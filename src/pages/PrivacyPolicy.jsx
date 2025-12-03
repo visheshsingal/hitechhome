@@ -133,14 +133,13 @@ const PrivacyPolicy = ({ setCurrentPage }) => {
             </p>
             <div className="mt-4 p-4 bg-gray-50 rounded-lg">
               <p className="text-gray-700">
-                <strong>Email:</strong> info@anukulindia.com
+                <strong>Email:</strong> Hitechhomesluxury@gmail.com
               </p>
               <p className="text-gray-700">
-                <strong>Phone:</strong> +91-97179 88411
+                <strong>Phone:</strong> +91-956000 2261
               </p>
               <p className="text-gray-700">
-                <strong>Address:</strong> D-9, Vyapar Marg, Block D, Noida
-                Sector 3, Uttar Pradesh 201301
+                <strong>Address:</strong> 8101 FF BOUGAINVILLEA LANE DLF PHASE 4, Gurugram, Haryana 122009
               </p>
             </div>
           </section>

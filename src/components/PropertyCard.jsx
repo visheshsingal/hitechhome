@@ -371,10 +371,10 @@ const PropertyDetails = ({ setCurrentPage }) => {
                     <Phone size={18} className="text-sky-600" />
                   </div>
                   <span className="text-gray-700 font-semibold">
-                    +91-97179 88411
+                    +91-956000 2261
                   </span>
                    <span className="text-gray-700 font-semibold">
-                    +91-88821 24222
+                    +91-89290 28000
                   </span>
                 </div>
                 <div className="flex items-center gap-3 p-3 rounded-xl hover:bg-sky-50 transition-colors cursor-pointer group">
@@ -382,7 +382,7 @@ const PropertyDetails = ({ setCurrentPage }) => {
                     <Mail size={18} className="text-sky-600" />
                   </div>
                   <span className="text-gray-700 font-semibold">
-                    info@anukulindia.com
+                    Hitechhomesluxury@gmail.com
                   </span>
                 </div>
               </div>

@@ -120,16 +120,16 @@ const Contact = ({ setCurrentPage }) => {
                     Sales & Support Team
                   </h3>
                   <a 
-                    href="tel:+919717988411" 
+                    href="tel:+919560002261" 
                     className="text-sm text-gray-700 hover:text-indigo-600 transition-colors block"
                   >
-                    +91-97179 88411
+                    +91-956000 2261
                   </a>
                   <a 
-                    href="tel:+918882124222" 
+                    href="tel:+918929028000" 
                     className="text-sm text-gray-700 hover:text-indigo-600 transition-colors block"
                   >
-                    +91-88821 24222
+                    +91-89290 28000
                   </a>
                 </div>
               </div>
@@ -146,17 +146,17 @@ const Contact = ({ setCurrentPage }) => {
                     Email To Our Team
                   </h3>
                   <a 
-                    href="mailto:info@anukulindia.com" 
+                    href="mailto:Hitechhomesluxury@gmail.com" 
                     className="text-sm text-gray-700 hover:text-indigo-600 transition-colors block"
                   >
-                    info@anukulindia.com
+                    Hitechhomesluxury@gmail.com
                   </a>
-                  <a 
+                  {/* <a 
                     href="mailto:mrinal@anukulindia.com" 
                     className="text-sm text-gray-700 hover:text-indigo-600 transition-colors block"
                   >
                     mrinal@anukulindia.com
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>
@@ -172,7 +172,7 @@ const Contact = ({ setCurrentPage }) => {
                     Find Us Directly At
                   </h3>
                   <p className="text-sm text-gray-700">
-                    D-9, Vyapar Marg, Block D, Noida Sector 3, Noida, Uttar Pradesh 201301
+                  8101 FF BOUGAINVILLEA LANE DLF PHASE 4, Gurugram, Haryana 122009
                   </p>
                 </div>
               </div>

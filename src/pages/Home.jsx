@@ -401,7 +401,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
           <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/15 backdrop-blur-md px-3 sm:px-4 py-2 rounded-full mb-1 sm:mb-2 animate-bounce">
             <Sparkles size={16} className="text-yellow-300 sm:w-[18px]" />
             <span className="text-xs sm:text-sm font-semibold">
-              100% RERA Compliant · Exclusive Inventory · Trusted Advisors
+              Prime Homes · Elite Locations · Curated Exclusively for You
             </span>
           </div>
 
@@ -412,14 +412,14 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
               animation: "slideUp 0.8s ease-out",
             }}
           >
-            Find the{" "}
-            <span className="text-rose-300">Right Home in the Right Project </span>
+            Gurgaon’s finest homes{" "}
+            <span className="text-rose-300">from new launches to luxury ready-to-move </span>
             <br className="hidden sm:block" />
-            across Gurgaon&apos;s prime locations.
+            guided by trusted experts.
           </h1>
 
           <p className="text-xs sm:text-sm md:text-lg text-white/95 max-w-3xl mx-auto drop-shadow-lg font-normal leading-relaxed px-2">
-            From new launches to ready-to-move homes, explore curated residential projects with expert guidance every step of the way.
+Apartments, penthouses, or private builder floors — we deal in all
           </p>
 
           {/* Quick toggles like Residential / Commercial */}
@@ -486,7 +486,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center justify-center gap-8 md:gap-12">
             {/* Main Image Container */}
-            <div className="w-full lg:w-3/4 max-w-4xl">
+            {/* <div className="w-full lg:w-3/4 max-w-4xl">
               <div className="relative group">
                 <img
                   src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80"
@@ -495,7 +495,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/50 to-transparent rounded-3xl"></div>
               </div>
-            </div>
+            </div> */}
 
             {/* Stats Block */}
             <div className="w-full bg-white rounded-2xl shadow-2xl p-4 md:p-6 border-2 border-indigo-100 backdrop-blur-sm">
@@ -540,7 +540,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
                     gradient: "from-rose-500 to-rose-600",
                   },
                   {
-                    value: "10+",
+                    value: "25+",
                     label: "Years of Experience",
                     icon: <TrendingUp size={18} />,
                     gradient: "from-indigo-600 to-purple-600",
@@ -591,7 +591,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
                     className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 sm:mb-4 bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
-                    Advisory First — Fees Never
+                   Turning transactions into relationships
                   </h2>
             <p className="text-sm sm:text-base md:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed px-2">
               Your money works fully for you, helping you get the best home without unnecessary charges.
@@ -1310,6 +1310,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
       {/* Floating WhatsApp anchor removed — using `FloatingWhatsApp` component instead */}
 
       <style>{`
+      
         @keyframes slideUp {
           from {
             opacity: 0;

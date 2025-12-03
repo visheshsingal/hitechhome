@@ -50,11 +50,11 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             
             {/* CENTER: Mobile Phone Number (New Position) - Hidden on desktop */}
             <a
-              href="tel:+919717988411"
+              href="tel:+919560002261"
               className="md:hidden flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-rose-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-all text-sm"
             >
               <Phone size={18} />
-              <span>9717988411</span>
+              <span>9560002261</span>
             </a>
 
             {/* CENTER: Desktop Navigation */}
@@ -87,11 +87,11 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
             {/* RIGHT: Desktop Phone + Auth */}
             <div className="hidden md:flex items-center gap-4">
               <a
-                href="tel:+919717988411"
+                href="tel:+919560002261"
                 className="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-rose-600 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-all"
               >
                 <Phone size={20} />
-                <span className="text-sm">+9 97179 88411</span>
+                <span className="text-sm">+91 956000 2261</span>
               </a>
 
               {user ? (

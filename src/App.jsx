@@ -18,6 +18,7 @@ import AdminEnquiries from "./pages/AdminEnquiries";
 import ChatBot from "./components/ChatBot";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import SocialBar from "./components/SocialBar";
+import TimedWhatsAppPopup from "./components/TimedWhatsAppPopup";
 import { UserAuthProvider } from "./context/UserAuthContext";
 import "./styles/index.css";
 import AdminAnalytics from "./pages/AdminAnalytics";
@@ -134,6 +135,7 @@ function App() {
                 {showFooter && <Footer setCurrentPage={setCurrentPage} />}
               <ChatBot />
               <FloatingWhatsApp />
+              <TimedWhatsAppPopup />
             </div>
           </EnquiryProvider>
         </PropertyProvider>

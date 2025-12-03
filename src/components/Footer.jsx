@@ -100,7 +100,7 @@ export default function Footer({ setCurrentPage }) {
             <li className="flex items-start gap-2 justify-center sm:justify-start">
               <MapPin size={18} className="text-indigo-400 mt-1" />
               <span>
-                D-9, Vyapar Marg, Block D, Noida Sector 3, Noida, Uttar Pradesh 201301
+               8101 FF BOUGAINVILLEA LANE DLF PHASE 4, Gurugram, Haryana 122009
               </span>
             </li>
 
@@ -108,11 +108,11 @@ export default function Footer({ setCurrentPage }) {
             <li className="flex items-start gap-2 justify-center sm:justify-start">
               <Phone size={18} className="text-indigo-400 mt-1" />
               <div className="flex flex-col leading-relaxed">
-                <a href="tel:+919717988411" className="hover:text-indigo-400 transition-colors">
-                  +91-97179 88411
+                <a href="tel:+919560002261" className="hover:text-indigo-400 transition-colors">
+                  +91-956000 2261
                 </a>
-                <a href="tel:+918882124222" className="hover:text-indigo-400 transition-colors">
-                  +91-88821 24222
+                <a href="tel:+918929028000" className="hover:text-indigo-400 transition-colors">
+                  +91-89290 28000
                 </a>
               </div>
             </li>
@@ -121,12 +121,12 @@ export default function Footer({ setCurrentPage }) {
             <li className="flex items-start gap-2 justify-center sm:justify-start">
               <Mail size={18} className="text-indigo-400 mt-1" />
               <div className="flex flex-col leading-relaxed">
-                <a href="mailto:info@anukulindia.com" className="hover:text-indigo-400 transition-colors">
-                  info@anukulindia.com
+                <a href="mailto:Hitechhomesluxury@gmail.com" className="hover:text-indigo-400 transition-colors">
+                  Hitechhomesluxury@gmail.com
                 </a>
-                <a href="mailto:mrinal@anukulindia.com" className="hover:text-indigo-400 transition-colors">
+                {/* <a href="mailto:mrinal@anukulindia.com" className="hover:text-indigo-400 transition-colors">
                   mrinal@anukulindia.com
-                </a>
+                </a> */}
               </div>
             </li>
           </ul>
