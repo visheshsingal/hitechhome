@@ -17,6 +17,7 @@ import EditProperty from "./pages/EditProperty";
 import AdminEnquiries from "./pages/AdminEnquiries";
 import ChatBot from "./components/ChatBot";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import SocialBar from "./components/SocialBar";
 import { UserAuthProvider } from "./context/UserAuthContext";
 import "./styles/index.css";
 import AdminAnalytics from "./pages/AdminAnalytics";
@@ -125,6 +126,8 @@ function App() {
                     setCurrentPage={setCurrentPage}
                   />
                 )}
+                {/* Site-wide right-side social icons */}
+                <SocialBar />
                 <ErrorBoundary>
                   {renderPage()}
                 </ErrorBoundary>

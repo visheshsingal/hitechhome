@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Menu, X, Sparkles, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
 import logo from "../assets/logo1.png";
 import { UserAuthContext } from "../context/UserAuthContext";
@@ -38,7 +38,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     <>
       <nav className="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-indigo-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-21">
+          <div className="flex justify-between items-center h-20">
             {/* ===== LOGO ===== */}
             <div
               onClick={() => handleNavigate("home")}
@@ -47,27 +47,11 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
               <img
                 src={logo}
                 alt="Hi-Tech Homes Logo"
-                className="h-32 md:h-36 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+className="h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
               />
             </div>
 
-            {/* ===== MOBILE CENTER SOCIAL ICONS (left: logo, center: socials, right: menu) ===== */}
-            <div className="flex-1 flex items-center justify-center md:hidden">
-              <div className="flex items-center gap-3">
-                <a href="https://www.facebook.com/100064200993187" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-[#1877F2] border border-[#1877F2] hover:bg-[#1877F2] hover:text-white transition-colors">
-                  <Facebook size={18} />
-                </a>
-                <a href="https://www.instagram.com/hitechhomesluxury?igsh=MWljd21xOTZ1aHkwcA==" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-[#E1306C] border border-[#E1306C] hover:bg-gradient-to-br hover:from-[#E1306C] hover:to-[#C13584] hover:text-white transition-all">
-                  <Instagram size={18} />
-                </a>
-                <a href="https://www.linkedin.com/company/hitech-homesgurgaon/" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-[#0A66C2] border border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors">
-                  <Linkedin size={18} />
-                </a>
-                <a href="https://m.youtube.com/@hitech_homes" target="_blank" rel="noreferrer" className="p-1.5 rounded-full text-[#FF0000] border border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-colors">
-                  <Youtube size={18} />
-                </a>
-              </div>
-            </div>
+            {/* mobile center socials removed as requested */}
 
             {/* ===== DESKTOP NAVIGATION ===== */}
             <div className="hidden md:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
@@ -100,20 +84,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
             {/* ===== RIGHT SIDE BUTTONS (with small social icons) ===== */}
             <div className="hidden md:flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-2 mr-2">
-                  <a href="https://www.facebook.com/100064200993187" target="_blank" rel="noreferrer" aria-label="Facebook" className="p-1.5 rounded-full text-[#1877F2] border border-[#1877F2] hover:bg-[#1877F2] hover:text-white transition-colors">
-                    <Facebook size={16} />
-                  </a>
-                  <a href="https://www.instagram.com/hitechhomesluxury?igsh=MWljd21xOTZ1aHkwcA==" target="_blank" rel="noreferrer" aria-label="Instagram" className="p-1.5 rounded-full text-[#E1306C] border border-[#E1306C] hover:bg-gradient-to-br hover:from-[#E1306C] hover:to-[#C13584] hover:text-white transition-all">
-                    <Instagram size={16} />
-                  </a>
-                  <a href="https://www.linkedin.com/company/hitech-homesgurgaon/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-1.5 rounded-full text-[#0A66C2] border border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-colors">
-                    <Linkedin size={16} />
-                  </a>
-                  <a href="https://m.youtube.com/@hitech_homes" target="_blank" rel="noreferrer" aria-label="YouTube" className="p-1.5 rounded-full text-[#FF0000] border border-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-colors">
-                    <Youtube size={16} />
-                  </a>
-                </div>
+              {/* desktop social icons removed */}
               {user ? (
                 <>
                   <button
@@ -255,21 +226,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 </button>
               )}
 
-              {/* Mobile social links - centered and styled like footer for visibility */}
-              <div className="w-full flex items-center justify-center gap-3 mt-4 px-4">
-                <a href="https://www.facebook.com/100064200993187" target="_blank" rel="noreferrer" aria-label="Facebook" className="p-2.5 rounded-full border border-[#1877F2] text-[#1877F2] hover:bg-[#1877F2] hover:text-white transition-all duration-200">
-                  <Facebook size={18} />
-                </a>
-                <a href="https://www.instagram.com/hitechhomesluxury?igsh=MWljd21xOTZ1aHkwcA==" target="_blank" rel="noreferrer" aria-label="Instagram" className="p-2.5 rounded-full border border-[#E1306C] text-[#E1306C] hover:bg-gradient-to-br hover:from-[#E1306C] hover:to-[#C13584] hover:text-white transition-all duration-200">
-                  <Instagram size={18} />
-                </a>
-                <a href="https://www.linkedin.com/company/hitech-homesgurgaon/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="p-2.5 rounded-full border border-[#0A66C2] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all duration-200">
-                  <Linkedin size={18} />
-                </a>
-                <a href="https://m.youtube.com/@hitech_homes" target="_blank" rel="noreferrer" aria-label="YouTube" className="p-2.5 rounded-full border border-[#FF0000] text-[#FF0000] hover:bg-[#FF0000] hover:text-white transition-all duration-200">
-                  <Youtube size={18} />
-                </a>
-              </div>
+              {/* mobile dropdown socials removed */}
             </div>
           </div>
         )}

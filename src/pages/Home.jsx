@@ -54,8 +54,8 @@ const propertiesRef = useRef(null);
   // Zero brokerage style benefits
   const zeroBenefits = [
     {
-      title: "Zero Brokerage",
-      desc: "No brokerage — pay only for the property.",
+      title: "Maximum Value",
+      desc: "Maximum Value — Pay Only for What Matters.",
       icon: <ShieldCheck className="w-5 h-5" />,
     },
     {
@@ -413,15 +413,13 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
             }}
           >
             Find the{" "}
-            <span className="text-rose-300">Right Home in the Right Project</span>
+            <span className="text-rose-300">Right Home in the Right Project </span>
             <br className="hidden sm:block" />
             across Gurgaon&apos;s prime locations.
           </h1>
 
           <p className="text-xs sm:text-sm md:text-lg text-white/95 max-w-3xl mx-auto drop-shadow-lg font-normal leading-relaxed px-2">
-            From new launches to ready-to-move homes, explore curated
-            residential projects with zero brokerage and
-            complete advisory support.
+            From new launches to ready-to-move homes, explore curated residential projects with expert guidance every step of the way.
           </p>
 
           {/* Quick toggles like Residential / Commercial */}
@@ -586,7 +584,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-100 to-indigo-100 px-3 sm:px-4 py-2 rounded-full mb-3">
               <ShieldCheck size={14} className="text-emerald-600 sm:w-4" />
               <p className="text-emerald-700 font-bold uppercase tracking-wider text-xs sm:text-sm">
-                Zero Brokerage. Maximum Value.
+               Maximum Value, Maximum Returns.
               </p>
             </div>
                   <h2
@@ -596,8 +594,7 @@ const residentialProjects = (properties || []).sort((a, b) => new Date(b.created
                     Advisory First — Fees Never
                   </h2>
             <p className="text-sm sm:text-base md:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed px-2">
-              We operate on a zero brokerage model so your budget goes directly
-              into your dream home, not into commissions.
+              Your money works fully for you, helping you get the best home without unnecessary charges.
             </p>
           </div>
 
