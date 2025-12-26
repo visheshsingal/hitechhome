@@ -70,6 +70,7 @@ export default function Footer({ setCurrentPage }) {
               { label: "Listings", page: "listings" },
               { label: "About", page: "about" },
               { label: "Contact", page: "contact" },
+              { label: "Privacy Policy", page: "privacy-policy" },
             ].map((link) => (
               <li key={link.page}>
                 <button

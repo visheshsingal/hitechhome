@@ -1,157 +1,63 @@
-import { Shield, ArrowLeft } from "lucide-react";
-
 const PrivacyPolicy = ({ setCurrentPage }) => {
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 md:p-12">
-        {/* Back Button */}
-        <button
-          onClick={() => setCurrentPage("home")}
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-6 transition-colors"
-        >
-          <ArrowLeft size={20} />
-          <span className="font-medium">Back to Home</span>
-        </button>
+    <div className="min-h-screen bg-white text-black py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold text-black mb-6">Privacy Policy</h1>
 
-        {/* Header */}
-        <div className="flex items-center gap-3 mb-8">
-          <div className="p-3 bg-blue-100 rounded-lg">
-            <Shield size={32} className="text-blue-600" />
-          </div>
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-              Privacy Policy
-            </h1>
-            <p className="text-sm text-gray-500 mt-1">
-              Last updated:{" "}
-              {new Date().toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
-              })}
-            </p>
-          </div>
-        </div>
+        <p className="mb-6">At Hitech Homes, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you visit or interact with our website.</p>
 
-        {/* Content */}
-        <div className="prose prose-blue max-w-none">
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              1. Introduction
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              Welcome to Hi-Tech Homes, operated by Anukul Infosystems India
-              LLP. We are committed to protecting your personal information and
-              your right to privacy. This Privacy Policy explains how we
-              collect, use, disclose, and safeguard your information when you
-              visit our website or use our services.
-            </p>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              2. Information We Collect
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-3">
-              We collect information that you provide directly to us, including:
-            </p>
-            <ul className="list-disc list-inside text-gray-600 space-y-2 ml-4">
-              <li>Name, email address, and phone number</li>
-              <li>Property preferences and search history</li>
-              <li>Communication records and enquiry details</li>
-              <li>
-                Payment information (processed securely through third-party
-                providers)
-              </li>
+        <ol className="list-decimal ml-6 space-y-4">
+          <li>
+            <strong>Information We Collect</strong>
+            <p className="mt-2">We may collect the following information:</p>
+            <ul className="list-disc ml-6">
+              <li>Name, phone number, and email address</li>
+              <li>Property preferences and enquiry details</li>
+              <li>Location details (if submitted through forms)</li>
+              <li>Any information voluntarily shared through contact or enquiry forms</li>
             </ul>
-          </section>
+          </li>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              3. How We Use Your Information
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-3">
-              We use the information we collect to:
-            </p>
-            <ul className="list-disc list-inside text-gray-600 space-y-2 ml-4">
-              <li>Provide, maintain, and improve our services</li>
-              <li>Process your property enquiries and transactions</li>
-              <li>Send you updates, newsletters, and promotional materials</li>
-              <li>Respond to your comments, questions, and requests</li>
-              <li>
-                Comply with legal obligations and protect our legal rights
-              </li>
+          <li>
+            <strong>How We Use Your Information</strong>
+            <p className="mt-2">We use your information for the following purposes:</p>
+            <ul className="list-disc ml-6">
+              <li>To respond to property enquiries and requests</li>
+              <li>To provide information about our projects, services, and offers</li>
+              <li>To contact you regarding site visits, bookings, or follow-ups</li>
+              <li>To improve our website, services, and customer experience</li>
             </ul>
-          </section>
+          </li>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              4. Contact Methods
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              By providing your contact information and agreeing to our terms,
-              you consent to be contacted via Email, WhatsApp, SMS, RCS, or
-              Phone Call for property-related communications, updates, and
-              promotional offers.
-            </p>
-          </section>
+          <li>
+            <strong>Data Protection</strong>
+            <p className="mt-2">We implement appropriate technical and organizational security measures to protect your personal data against unauthorized access, misuse, alteration, or disclosure.</p>
+          </li>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              5. Data Security
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              We implement appropriate technical and organizational measures to
-              protect your personal information against unauthorized access,
-              alteration, disclosure, or destruction.
-            </p>
-          </section>
+          <li>
+            <strong>Payment Security</strong>
+            <p className="mt-2">Any payments, if applicable, are processed through secure third-party payment gateways. Hitech Homes does not store your banking or card details on its servers.</p>
+          </li>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              6. Your Rights
-            </h2>
-            <p className="text-gray-600 leading-relaxed mb-3">
-              You have the right to:
-            </p>
-            <ul className="list-disc list-inside text-gray-600 space-y-2 ml-4">
-              <li>Access and receive a copy of your personal data</li>
-              <li>Request correction of inaccurate information</li>
-              <li>Request deletion of your personal information</li>
-              <li>Opt-out of marketing communications</li>
-              <li>Withdraw consent at any time</li>
-            </ul>
-          </section>
+          <li>
+            <strong>Third-Party Services</strong>
+            <p className="mt-2">We may use trusted third-party services such as CRM tools, analytics services, or marketing platforms strictly for business operations and website functionality. Your data is never sold to third parties.</p>
+          </li>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              7. Contact Us
-            </h2>
-            <p className="text-gray-600 leading-relaxed">
-              If you have any questions about this Privacy Policy, please
-              contact us at:
-            </p>
-            <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-              <p className="text-gray-700">
-                <strong>Email:</strong> Hitechhomesluxury@gmail.com
-              </p>
-              <p className="text-gray-700">
-                <strong>Phone:</strong> +91-956000 2261
-              </p>
-              <p className="text-gray-700">
-                <strong>Address:</strong> 8101 FF BOUGAINVILLEA LANE DLF PHASE 4, Gurugram, Haryana 122009
-              </p>
+          <li>
+            <strong>Policy Updates</strong>
+            <p className="mt-2">Hitech Homes reserves the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon being posted on the website.</p>
+          </li>
+
+          <li>
+            <strong>Contact Information</strong>
+            <p className="mt-2">For any questions or concerns regarding this Privacy Policy, please contact us:</p>
+            <div className="mt-3">
+              <p><strong>Email:</strong> Hitechhomesluxury@gmail.com</p>
+              <p><strong>Phone:</strong> +91 956000 2261</p>
             </div>
-          </section>
-        </div>
-
-        {/* Footer Note */}
-        <div className="mt-12 pt-6 border-t border-gray-200">
-          <p className="text-sm text-gray-500 text-center">
-            © {new Date().getFullYear()} Anukul Infosystems India LLP. All
-            rights reserved.
-          </p>
-        </div>
+          </li>
+        </ol>
       </div>
     </div>
   );
