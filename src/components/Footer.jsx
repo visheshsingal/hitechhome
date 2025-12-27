@@ -15,6 +15,21 @@ export default function Footer({ setCurrentPage }) {
 
   const handleNavigate = (page) => {
     setCurrentPage(page);
+    // push a friendly URL so direct linking works
+    const pathMap = {
+      "home": "/",
+      "listings": "/listings",
+      "about": "/about",
+      "contact": "/contact",
+      "privacy-policy": "/privacy-policy",
+      "terms-conditions": "/terms-conditions",
+    };
+    const newPath = pathMap[page] || "/";
+    try {
+      window.history.pushState({}, "", newPath);
+    } catch (e) {
+      // ignore if pushState isn't available
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

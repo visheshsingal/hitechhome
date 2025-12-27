@@ -100,6 +100,41 @@ function App() {
     }
   };
 
+  // sync currentPage with URL path so direct links like /privacy-policy work
+  useEffect(() => {
+    const pathToPage = (path) => {
+      if (!path || path === "/") return "home";
+      if (path.startsWith("/property/")) return "property-details";
+      switch (path) {
+        case "/listings":
+          return "listings";
+        case "/about":
+          return "about";
+        case "/contact":
+          return "contact";
+        case "/privacy-policy":
+          return "privacy-policy";
+        case "/terms-conditions":
+          return "terms-conditions";
+        default:
+          return "home";
+      }
+    };
+
+    // set initial page based on current URL
+    setCurrentPage((prev) => {
+      const mapped = pathToPage(window.location.pathname);
+      return prev === mapped ? prev : mapped;
+    });
+
+    // handle browser back/forward
+    const onPopState = () => {
+      setCurrentPage(pathToPage(window.location.pathname));
+    };
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [setCurrentPage]);
+
   const showNavbar = ![
     "admin-login",
     "admin-dashboard",

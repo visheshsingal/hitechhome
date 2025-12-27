@@ -24,10 +24,27 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // enhance navigation to push a URL so direct linking works
+  const pushPathForPage = (page) => {
+    const pathMap = {
+      home: "/",
+      listings: "/listings",
+      about: "/about",
+      contact: "/contact",
+      "privacy-policy": "/privacy-policy",
+      "terms-conditions": "/terms-conditions",
+    };
+    const newPath = pathMap[page] || "/";
+    try {
+      window.history.pushState({}, "", newPath);
+    } catch (e) {}
+  };
+
   const handleLogout = () => {
     if (user) logout();
     else if (regularUser) userLogout();
     handleNavigate("home");
+    pushPathForPage("home");
   };
 
   return (
@@ -38,7 +55,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
 
             {/* LEFT: Logo */}
             <div
-              onClick={() => handleNavigate("home")}
+              onClick={() => { handleNavigate("home"); pushPathForPage("home"); }}
               className="flex items-center cursor-pointer group"
             >
               <img
@@ -64,7 +81,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 return (
                   <div key={link.page} className="group relative">
                     <button
-                      onClick={() => handleNavigate(link.page)}
+                      onClick={() => { handleNavigate(link.page); pushPathForPage(link.page); }}
                       className={`text-base font-semibold tracking-wide transition-all pb-1 ${
                         isActive
                           ? "bg-gradient-to-r from-indigo-600 to-rose-600 bg-clip-text text-transparent"
@@ -150,7 +167,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 {navLinks.map((link) => (
                   <button
                     key={link.page}
-                    onClick={() => handleNavigate(link.page)}
+                    onClick={() => { handleNavigate(link.page); pushPathForPage(link.page); }}
                     className={`w-full text-left text-base font-semibold px-6 py-4 rounded-xl transition-all ${
                       currentPage === link.page
                         ? "bg-gradient-to-r from-indigo-500 to-rose-600 text-white shadow-lg"
