@@ -102,7 +102,10 @@ function App() {
 
   // sync currentPage with URL path so direct links like /privacy-policy work
   useEffect(() => {
-    const pathToPage = (path) => {
+    const pathToPage = (raw) => {
+      // raw may be like '/privacy-policy' or '#/privacy-policy' or '#privacy-policy'
+      let path = raw || "/";
+      if (path.startsWith("#")) path = path.slice(1) || "/";
       if (!path || path === "/") return "home";
       if (path.startsWith("/property/")) return "property-details";
       switch (path) {
@@ -121,18 +124,22 @@ function App() {
       }
     };
 
-    // set initial page based on current URL
+    // set initial page based on hash (preferred) or pathname
+    const initialRaw = window.location.hash || window.location.pathname;
     setCurrentPage((prev) => {
-      const mapped = pathToPage(window.location.pathname);
+      const mapped = pathToPage(initialRaw);
       return prev === mapped ? prev : mapped;
     });
 
-    // handle browser back/forward
-    const onPopState = () => {
-      setCurrentPage(pathToPage(window.location.pathname));
-    };
+    // handle hash changes (and fallback to popstate just in case)
+    const onHashChange = () => setCurrentPage(pathToPage(window.location.hash || window.location.pathname));
+    window.addEventListener("hashchange", onHashChange);
+    const onPopState = () => setCurrentPage(pathToPage(window.location.hash || window.location.pathname));
     window.addEventListener("popstate", onPopState);
-    return () => window.removeEventListener("popstate", onPopState);
+    return () => {
+      window.removeEventListener("hashchange", onHashChange);
+      window.removeEventListener("popstate", onPopState);
+    };
   }, [setCurrentPage]);
 
   const showNavbar = ![

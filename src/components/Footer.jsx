@@ -15,7 +15,7 @@ export default function Footer({ setCurrentPage }) {
 
   const handleNavigate = (page) => {
     setCurrentPage(page);
-    // push a friendly URL so direct linking works
+    // set a hash so refresh doesn't cause a server 404 (works without server rewrites)
     const pathMap = {
       "home": "/",
       "listings": "/listings",
@@ -26,9 +26,9 @@ export default function Footer({ setCurrentPage }) {
     };
     const newPath = pathMap[page] || "/";
     try {
-      window.history.pushState({}, "", newPath);
+      window.location.hash = newPath;
     } catch (e) {
-      // ignore if pushState isn't available
+      // ignore
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
