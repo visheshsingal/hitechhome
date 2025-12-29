@@ -4,6 +4,7 @@ import logo from '../assets/logo1.png';
 const ProjectLanding = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isVideoPopupOpen, setIsVideoPopupOpen] = useState(false);
+  const [activeVideo, setActiveVideo] = useState({ type: 'youtube', src: 'Jq3gozsFvkM' });
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   
   // Hero form refs
@@ -177,7 +178,10 @@ const ProjectLanding = () => {
 
             {/* Watch Video Button */}
             <button 
-              onClick={() => setIsVideoPopupOpen(true)}
+              onClick={() => {
+                setActiveVideo({ type: 'youtube', src: 'Jq3gozsFvkM' });
+                setIsVideoPopupOpen(true);
+              }}
               className="w-full mt-4 bg-white/10 backdrop-blur-sm border-2 border-[#dfae75] text-white font-bold py-3 uppercase tracking-wider hover:bg-[#dfae75] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
             >
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -343,6 +347,54 @@ const ProjectLanding = () => {
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ================= VIDEO SHOWCASE SECTION ================= */}
+      <section className="bg-black py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-serif text-[#dfae75] uppercase tracking-widest mb-4">
+              Experience <span className="text-[#e4b57b]">THE DUALIS</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Watch our exclusive project showcase</p>
+          </div>
+
+          <div className="max-w-2xl mx-auto px-4">
+            <div 
+              onClick={() => {
+                setActiveVideo({ type: 'local', src: '/reel7.mp4' });
+                setIsVideoPopupOpen(true);
+              }}
+              className="relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl border-4 border-[#dfae75]/30 hover:border-[#dfae75]/60 transition-all duration-300"
+            >
+              <div className="aspect-video w-full relative">
+                <img 
+                  src="http://shapoorjidualis.com/img/g1.jpg" 
+                  alt="Project Video" 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-[#dfae75] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-black fill-current translate-x-1" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mt-6">
+               <button 
+                 onClick={() => {
+                   setActiveVideo({ type: 'local', src: '/reel7.mp4' });
+                   setIsVideoPopupOpen(true);
+                 }}
+                 className="text-[#dfae75] font-bold uppercase tracking-widest text-sm hover:underline"
+               >
+                 Click to Watch Full Video
+               </button>
+            </div>
           </div>
         </div>
       </section>
@@ -1003,7 +1055,11 @@ const ProjectLanding = () => {
       </section>
 
       <ContactPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
-      <VideoPopup isOpen={isVideoPopupOpen} onClose={() => setIsVideoPopupOpen(false)} />
+      <VideoPopup 
+        isOpen={isVideoPopupOpen} 
+        onClose={() => setIsVideoPopupOpen(false)} 
+        videoData={activeVideo}
+      />
     </div>
   );
 };
@@ -1115,30 +1171,41 @@ const GalleryCarousel = () => {
 export default ProjectLanding;
 
 // Video Popup Component
-const VideoPopup = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+const VideoPopup = ({ isOpen, onClose, videoData }) => {
+  if (!isOpen || !videoData) return null;
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/95 backdrop-blur-md" onClick={onClose}>
       <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
         {/* Close Button */}
         <button 
           onClick={onClose}
-          className="absolute -top-12 right-0 text-white hover:text-[#dfae75] transition-colors text-4xl font-bold"
+          className="absolute -top-12 right-0 text-white hover:text-[#dfae75] transition-colors text-4xl font-bold p-2"
         >
           ×
         </button>
         
         {/* Video Container */}
-        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-          <iframe 
-            className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
-            src="https://www.youtube.com/embed/Jq3gozsFvkM?autoplay=1"
-            title="Shapoorji Pallonji Dualis Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+        <div className="relative w-full aspect-video">
+          {videoData.type === 'youtube' ? (
+            <iframe 
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl border-2 border-[#dfae75]/20"
+              src={`https://www.youtube.com/embed/${videoData.src}?autoplay=1`}
+              title="Project Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <video 
+              autoPlay 
+              controls 
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl border-2 border-[#dfae75]/20"
+            >
+              <source src={videoData.src} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
       </div>
     </div>
