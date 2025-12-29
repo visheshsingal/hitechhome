@@ -36,7 +36,7 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
     };
     const newPath = pathMap[page] || "/";
     try {
-      window.location.hash = newPath; // use hash so refresh doesn't 404 without server routing
+      window.history.pushState({}, "", newPath);
     } catch (e) {}
   };
 

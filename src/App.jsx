@@ -103,12 +103,12 @@ function App() {
     }
   };
 
+
   // sync currentPage with URL path so direct links like /privacy-policy work
   useEffect(() => {
-    const pathToPage = (raw) => {
-      // raw may be like '/privacy-policy' or '#/privacy-policy' or '#privacy-policy'
-      let path = raw || "/";
-      if (path.startsWith("#")) path = path.slice(1) || "/";
+    const pathToPage = (path) => {
+      // Remove any hash prefix if present (for backward compatibility)
+      if (path.startsWith("#")) path = path.slice(1);
       if (!path || path === "/") return "home";
       if (path.startsWith("/property/")) return "property-details";
       switch (path) {
@@ -129,20 +129,20 @@ function App() {
       }
     };
 
-    // set initial page based on hash (preferred) or pathname
-    const initialRaw = window.location.hash || window.location.pathname;
+    // Set initial page based on pathname
+    const initialPath = window.location.pathname;
     setCurrentPage((prev) => {
-      const mapped = pathToPage(initialRaw);
+      const mapped = pathToPage(initialPath);
       return prev === mapped ? prev : mapped;
     });
 
-    // handle hash changes (and fallback to popstate just in case)
-    const onHashChange = () => setCurrentPage(pathToPage(window.location.hash || window.location.pathname));
-    window.addEventListener("hashchange", onHashChange);
-    const onPopState = () => setCurrentPage(pathToPage(window.location.hash || window.location.pathname));
+    // Handle browser back/forward buttons
+    const onPopState = () => {
+      setCurrentPage(pathToPage(window.location.pathname));
+    };
     window.addEventListener("popstate", onPopState);
+    
     return () => {
-      window.removeEventListener("hashchange", onHashChange);
       window.removeEventListener("popstate", onPopState);
     };
   }, [setCurrentPage]);

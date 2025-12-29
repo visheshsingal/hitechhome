@@ -26,7 +26,7 @@ export default function Footer({ setCurrentPage }) {
     };
     const newPath = pathMap[page] || "/";
     try {
-      window.location.hash = newPath;
+      window.history.pushState({}, "", newPath);
     } catch (e) {
       // ignore
     }
