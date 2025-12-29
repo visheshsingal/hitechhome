@@ -3,6 +3,7 @@ import logo from '../assets/logo1.png';
 
 const ProjectLanding = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isVideoPopupOpen, setIsVideoPopupOpen] = useState(false);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   
   // Hero form refs
@@ -91,38 +92,38 @@ const ProjectLanding = () => {
             </h2>
             
             <div className="w-fit bg-[#dfae75] text-black px-4 py-2 text-sm md:text-base font-bold uppercase tracking-wider">
-              PREMIUM - 3.5 & 4.5 BHK HOMES
+              EXCLUSIVE 3 & 4 BHK LUXURY UNITS
             </div>
             
             <div className="bg-[#e4b57b] bg-opacity-90 text-black px-6 py-3 w-fit font-bold text-lg md:text-xl tracking-wider rounded-r-md">
-               PRICE STARTS : ₹ 5.77 CR*
+               FLASH SALE: ₹24,000/sq.ft (3BHK) | ₹25,000/sq.ft (4BHK)
             </div>
 
             {/* Features List - Hidden on mobile, shown on desktop */}
             <ul className="hidden lg:flex lg:flex-col space-y-2 mt-8 text-sm md:text-base font-medium text-gray-100/90">
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>PRICE VALID FOR 1st 50 BOOKINGS</span>
+                  <span>Twin Tower Concept with only 198 Units</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Total Land Area- 2 Acres</span>
+                  <span>Exclusive Tower for 4 BHK</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Comfortable & Convenient Luxury Living</span>
+                  <span>G+40 Tower Height</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Luxury Facilities And Amenities</span>
+                  <span>4 Level Basement + 4 Level Podium Parking</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Luxurious Clubhouse & Amenities ✓ 60,000 sq.ft.</span>
+                  <span>Special 20:80 Festive Payment Plan</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Twin Towers - G+40 Story.</span>
+                  <span>Clubhouse with Modern Amenities</span>
                </li>
             </ul>
 
@@ -173,6 +174,17 @@ const ProjectLanding = () => {
                 Submit
               </button>
             </form>
+
+            {/* Watch Video Button */}
+            <button 
+              onClick={() => setIsVideoPopupOpen(true)}
+              className="w-full mt-4 bg-white/10 backdrop-blur-sm border-2 border-[#dfae75] text-white font-bold py-3 uppercase tracking-wider hover:bg-[#dfae75] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              Watch Video
+            </button>
           </div>
 
           {/* Features List - Shown on mobile below form */}
@@ -180,27 +192,27 @@ const ProjectLanding = () => {
             <ul className="space-y-2 text-sm font-medium text-gray-100/90">
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>PRICE VALID FOR 1st 50 BOOKINGS</span>
+                  <span>Twin Tower Concept with only 198 Units</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Total Land Area- 2 Acres</span>
+                  <span>Exclusive Tower for 4 BHK</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Comfortable & Convenient Luxury Living</span>
+                  <span>G+40 Tower Height</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Luxury Facilities And Amenities</span>
+                  <span>4 Level Basement + 4 Level Podium Parking</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Luxurious Clubhouse & Amenities ✓ 60,000 sq.ft.</span>
+                  <span>Special 20:80 Festive Payment Plan</span>
                </li>
                <li className="flex items-center space-x-2">
                   <span className="text-[#dfae75]">✓</span>
-                  <span>Twin Towers - G+40 Story.</span>
+                  <span>Clubhouse with Modern Amenities</span>
                </li>
             </ul>
           </div>
@@ -231,13 +243,13 @@ const ProjectLanding = () => {
 
               <div className="text-gray-300 leading-relaxed text-sm md:text-base text-justify space-y-4 font-light">
                 <p>
-                  Shapoorji Pallonji Group has launched its latest residential complex in Shapoorji Pallonji Dualis Sector 46 Gurgaon, offering carefully built 3.5 & 4.5 BHK flats on many acres of lush nature. This new launch combines luxurious housing with efficient urban planning in Gurugram's most strategic location.
+                  Introducing THE DUALIS by Shapoorji Pallonji in Sector 46, Gurgaon - where luxury meets exclusivity in the heart of Gurugram. This prestigious development features a unique Twin Tower Concept with only 198 meticulously crafted units, ensuring an intimate and exclusive living experience.
                 </p>
                 <p>
-                  The quality and attention to detail of Shapoorji Pallonji houses appeal to discriminating homeowners seeking comfort and status, drawing on decades of construction experience. This idea is inspired by Shapoorji Pallonji's project to provide high-quality living places with great financial potential.
+                  THE DUALIS offers exclusive 3 & 4 BHK luxury units, with a dedicated tower exclusively for 4 BHK residences. Rising to an impressive G+40 tower height, these residences redefine modern luxury living with spacious layouts ranging from 2852-3009 sq.ft for 3BHK units and 3519-3605 sq.ft for 4BHK units.
                 </p>
                 <p>
-                  The builder wants to meet the rising need for excellent yet affordable homes in Gurugram's established sectors, where homeowners can enjoy mature neighbourhood infrastructure and contemporary facilities.
+                  Experience world-class amenities spread across a magnificent clubhouse, complemented by 4-level basement and 4-level podium car parking. With the exclusive 20:80 Festive Payment Plan, owning your dream home has never been more accessible.
                 </p>
               </div>
 
@@ -294,27 +306,31 @@ const ProjectLanding = () => {
               <ul className="space-y-4 text-gray-300 font-light text-sm md:text-base">
                 <li className="flex items-start">
                   <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                  <span>World-class amenities such as a pool, gymnasium, clubhouse, and landscaped gardens.</span>
+                  <span>Twin Tower Concept with only 198 exclusive units</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                  <span>Prime Location in Sector 46, Gurgaon, with convenient connectivity to major locations.</span>
+                  <span>Dedicated tower exclusively for 4 BHK residences</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                  <span>The project features thoughtfully designed apartments with great views.</span>
+                  <span>Unit Sizes: 3BHK + Utility (2852-3009 sq.ft) | 4BHK + Utility (3519-3605 sq.ft)</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                  <span>Spreading across 2 acres of land with several towers providing large, luxurious living spaces.</span>
+                  <span>G+40 Tower Height with stunning city views</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                  <span>Shapoorji Pallonji Dualis provides New upcoming homes with 3.5BHK and 4.5BHK units.</span>
+                  <span>4 Level Basement + 4 Level Podium Car Parking</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                  <span>Concierge Services By Quintessentially</span>
+                  <span>Concierge Services by Quintessentially</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#dfae75] mr-3 mt-1">•</span>
+                  <span>Attractive 30:40:30 & Special 20:80 Payment Plans</span>
                 </li>
               </ul>
 
@@ -328,6 +344,105 @@ const ProjectLanding = () => {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* ================= FLASH SALE SECTION ================= */}
+      <section className="relative bg-gradient-to-br from-[#1a1816] via-[#242b2e] to-[#1a1816] py-16 md:py-20 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-[#dfae75] rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-[#e4b57b] rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          
+          {/* Flash Sale Header */}
+          <div className="text-center mb-12">
+            <div className="inline-block mb-4 px-6 py-2 bg-gradient-to-r from-[#dfae75] to-[#e4b57b] text-black font-bold text-sm md:text-base uppercase tracking-widest rounded-full animate-pulse">
+              ✨ Flash Sale Alert ✨
+            </div>
+            <h2 className="text-3xl md:text-5xl font-serif text-white mb-4 uppercase tracking-wide">
+              Exclusive <span className="text-[#dfae75]">20:80</span> Special Festive Payment Plan
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl">Limited Units Only - Don't Miss This Opportunity!</p>
+          </div>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            {/* Payment Plan Highlights */}
+            <div className="bg-black/40 backdrop-blur-sm p-8 rounded-xl border-2 border-[#dfae75]/30 hover:border-[#dfae75]/60 transition-all duration-300 shadow-2xl">
+              <h3 className="text-2xl md:text-3xl text-[#dfae75] font-bold mb-6 flex items-center gap-3">
+                <span className="text-3xl">💰</span> Payment Plan Highlights
+              </h3>
+              <ul className="space-y-4 text-gray-200 text-base md:text-lg">
+                <li className="flex items-start gap-3 p-3 bg-[#dfae75]/10 rounded-lg hover:bg-[#dfae75]/20 transition-colors">
+                  <span className="text-[#dfae75] font-bold text-xl">•</span>
+                  <span><strong className="text-[#e4b57b]">10%</strong> on Booking</span>
+                </li>
+                <li className="flex items-start gap-3 p-3 bg-[#dfae75]/10 rounded-lg hover:bg-[#dfae75]/20 transition-colors">
+                  <span className="text-[#dfae75] font-bold text-xl">•</span>
+                  <span><strong className="text-[#e4b57b]">10%</strong> within 90 days</span>
+                </li>
+                <li className="flex items-start gap-3 p-3 bg-[#dfae75]/10 rounded-lg hover:bg-[#dfae75]/20 transition-colors">
+                  <span className="text-[#dfae75] font-bold text-xl">•</span>
+                  <span><strong className="text-[#e4b57b]">10%</strong> in May 2028</span>
+                </li>
+                <li className="flex items-start gap-3 p-3 bg-[#dfae75]/10 rounded-lg hover:bg-[#dfae75]/20 transition-colors">
+                  <span className="text-[#dfae75] font-bold text-xl">•</span>
+                  <span><strong className="text-[#e4b57b]">50%</strong> on Application of OC</span>
+                </li>
+                <li className="flex items-start gap-3 p-3 bg-[#dfae75]/10 rounded-lg hover:bg-[#dfae75]/20 transition-colors">
+                  <span className="text-[#dfae75] font-bold text-xl">•</span>
+                  <span><strong className="text-[#e4b57b]">20%</strong> on Offer of Possession</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Flat Pricing */}
+            <div className="bg-black/40 backdrop-blur-sm p-8 rounded-xl border-2 border-[#dfae75]/30 hover:border-[#dfae75]/60 transition-all duration-300 shadow-2xl">
+              <h3 className="text-2xl md:text-3xl text-[#dfae75] font-bold mb-6 flex items-center gap-3">
+                <span className="text-3xl">🏡</span> Flat Pricing
+              </h3>
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-[#dfae75]/20 to-[#e4b57b]/20 p-6 rounded-lg border border-[#dfae75]/40">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-white text-lg md:text-xl font-semibold">3 BHK + S</span>
+                    <span className="text-[#dfae75] text-2xl md:text-3xl font-bold">₹24,000</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">per sq.ft</p>
+                </div>
+                
+                <div className="bg-gradient-to-r from-[#dfae75]/20 to-[#e4b57b]/20 p-6 rounded-lg border border-[#dfae75]/40">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-white text-lg md:text-xl font-semibold">4 BHK + S</span>
+                    <span className="text-[#dfae75] text-2xl md:text-3xl font-bold">₹25,000</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">per sq.ft</p>
+                </div>
+
+                <div className="mt-6 p-4 bg-red-900/20 border border-red-500/30 rounded-lg">
+                  <p className="text-red-300 text-sm md:text-base text-center font-semibold">
+                    ⚠️ Payment Plan is subject to limited inventory only
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* CTA Button */}
+          <div className="text-center mt-12">
+            <button 
+              onClick={() => setIsPopupOpen(true)}
+              className="bg-gradient-to-r from-[#dfae75] to-[#e4b57b] text-black font-bold py-4 px-12 text-lg md:text-xl uppercase tracking-wider rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300 animate-pulse"
+            >
+              HURRY!! REGISTER NOW
+            </button>
+            <p className="text-gray-400 mt-4 text-sm md:text-base">Limited time offer - Don't miss out!</p>
+          </div>
+
         </div>
       </section>
 
@@ -428,102 +543,187 @@ const ProjectLanding = () => {
             Shapoorji Pallonji Dualis The Iconic Life.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 max-w-7xl mx-auto">
             
-            {/* Lift */}
+            {/* Badminton & Pickle Ball Court */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                 <rect x="5" y="3" width="14" height="18" rx="2" />
-                 <path d="M12 3v18" />
-                 <path d="M8 10l2-2 2 2" />
-                 <path d="M8 14l2 2 2-2" />
+                 <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                 <path d="M2 17l10 5 10-5"/>
+                 <path d="M2 12l10 5 10-5"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">LIFT</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Badminton & Pickle Ball</span>
+            </div>
+
+            {/* Fitness Zone/Gym */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M6 4l12 0"/>
+                  <path d="M5 4l0 16"/>
+                  <path d="M19 4l0 16"/>
+                  <path d="M6 20l12 0"/>
+                  <path d="M4 9l16 0"/>
+                  <path d="M4 15l16 0"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Fitness Zone/Gym</span>
             </div>
 
             {/* Swimming Pool */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                 <path d="M2 12c.6.5 1.2 1 2.5 1s2.5 0 4-2c1.4.3 2.7.7 4 1.5 1.4-1.2 2.7-2 4.5-2 2 .5 3.3 1.3 5 2.5" />
-                 <path d="M2 16c.6.5 1.2 1 2.5 1s2.5 0 4-2c1.4.3 2.7.7 4 1.5 1.4-1.2 2.7-2 4.5-2 2 .5 3.3 1.3 5 2.5" />
-                 <path d="M2 20c.6.5 1.2 1 2.5 1s2.5 0 4-2c1.4.3 2.7.7 4 1.5 1.4-1.2 2.7-2 4.5-2 2 .5 3.3 1.3 5 2.5" />
-                 <circle cx="18" cy="6" r="3" />
+                 <path d="M2 12c.6.5 1.2 1 2.5 1s2.5 0 4-2c1.4.3 2.7.7 4 1.5 1.4-1.2 2.7-2 4.5-2 2 .5 3.3 1.3 5 2.5"/>
+                 <path d="M2 16c.6.5 1.2 1 2.5 1s2.5 0 4-2c1.4.3 2.7.7 4 1.5 1.4-1.2 2.7-2 4.5-2 2 .5 3.3 1.3 5 2.5"/>
+                 <path d="M2 20c.6.5 1.2 1 2.5 1s2.5 0 4-2c1.4.3 2.7.7 4 1.5 1.4-1.2 2.7-2 4.5-2 2 .5 3.3 1.3 5 2.5"/>
+                 <circle cx="18" cy="6" r="3"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">SWIMMING POOL</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Swimming Pool</span>
             </div>
 
-            {/* Kid's Play Area */}
+            {/* Banquet Hall */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                 <path d="M4 20l10-10" />
-                 <path d="M14 10l4-4" />
-                 <path d="M14 20h6" />
-                 <path d="M17 17l3 3" />
-                 <path d="M3 20h2" />
+                  <path d="M3 3h18v18H3z"/>
+                  <path d="M8 8h8v8H8z"/>
+                  <path d="M12 8v8"/>
+                  <path d="M8 12h8"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">KID'S PLAY AREA</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Banquet Hall</span>
             </div>
 
-            {/* Yoga */}
+            {/* Golf Simulator */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                 <circle cx="12" cy="5" r="2" />
-                 <path d="M9 20l-1-4 2-5h4l2 5-1 4" />
-                 <path d="M8 12l-4 3" />
-                 <path d="M16 12l4 3" />
+                 <circle cx="12" cy="10" r="1"/>
+                 <path d="M12 11v10"/>
+                 <path d="M8 21h8"/>
+                 <path d="M12 3l-3 7h6l-3-7z"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">YOGA</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Golf Simulator</span>
             </div>
 
-            {/* Jogging Track */}
+            {/* Indoor Gaming Arena */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                 <path d="M12 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
-                 <path d="M9 22v-5l-2-3 2-6 6 1" />
-                 <path d="M12 14l3 3v5" />
-                 <path d="M15 8l3 3" />
-                 <path d="M4 21h16" strokeDasharray="2 2" />
+                  <rect x="2" y="4" width="20" height="12" rx="2"/>
+                  <circle cx="6" cy="10" r="1" fill="currentColor"/>
+                  <circle cx="18" cy="10" r="1" fill="currentColor"/>
+                  <circle cx="12" cy="10" r="1" fill="currentColor"/>
+                  <path d="M4 16v4"/>
+                  <path d="M20 16v4"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">JOGGING TRACK</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Indoor Gaming Arena</span>
             </div>
 
-            {/* Gymnasium */}
+            {/* Steam and Sauna */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M6 4l12 0" />
-                  <path d="M5 4l0 16" />
-                  <path d="M19 4l0 16" />
-                  <path d="M6 20l12 0" />
-                  <path d="M4 9l16 0" />
-                  <path d="M4 15l16 0" />
+                 <rect x="3" y="8" width="18" height="13" rx="2"/>
+                 <path d="M7 3v5"/>
+                 <path d="M12 3v5"/>
+                 <path d="M17 3v5"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">GYMNASIUM</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Steam & Sauna</span>
             </div>
 
-             {/* Amphitheatre */}
+            {/* Salon */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8" />
-                  <path d="M7 20c0-2.8 2.2-5 5-5s5 2.2 5 5" />
-                  <path d="M2 20h20" />
-                  <path d="M12 9V5" />
-                  <path d="M12 5l-2 2" />
-                  <path d="M12 5l2 2" />
+                 <circle cx="12" cy="8" r="3"/>
+                 <path d="M12 11v10"/>
+                 <path d="M8 15l4-4 4 4"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">AMPHITHEATRE</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Salon</span>
             </div>
 
-             {/* Indoor Games */}
+            {/* Jacuzzi */}
             <div className="flex flex-col items-center group cursor-pointer">
                <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                  <rect x="2" y="4" width="20" height="12" rx="2" />
-                  <circle cx="6" cy="10" r="1" fill="currentColor" />
-                  <circle cx="18" cy="10" r="1" fill="currentColor" />
-                  <circle cx="12" cy="10" r="1" fill="currentColor" />
-                  <path d="M4 16v4" />
-                  <path d="M20 16v4" />
+                 <ellipse cx="12" cy="17" rx="8" ry="4"/>
+                 <path d="M8 7v3"/>
+                 <path d="M12 5v5"/>
+                 <path d="M16 7v3"/>
                </svg>
-               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium">INDOOR GAMES</span>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Jacuzzi</span>
+            </div>
+
+            {/* Spa */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <path d="M12 2v6"/>
+                 <path d="M12 18v4"/>
+                 <circle cx="12" cy="12" r="4"/>
+                 <path d="M4.93 4.93l4.24 4.24"/>
+                 <path d="M14.83 14.83l4.24 4.24"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Spa</span>
+            </div>
+
+            {/* Yoga Aerobics Room */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <circle cx="12" cy="5" r="2"/>
+                 <path d="M9 20l-1-4 2-5h4l2 5-1 4"/>
+                 <path d="M8 12l-4 3"/>
+                 <path d="M16 12l4 3"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Yoga Aerobics Room</span>
+            </div>
+
+            {/* Reading Lounge & Library */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Reading Lounge & Library</span>
+            </div>
+
+            {/* Kids' Play Area */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <path d="M4 20l10-10"/>
+                 <path d="M14 10l4-4"/>
+                 <path d="M14 20h6"/>
+                 <path d="M17 17l3 3"/>
+                 <path d="M3 20h2"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Kids' Play Area</span>
+            </div>
+
+            {/* Vehicular Movement */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <rect x="3" y="11" width="18" height="8" rx="2"/>
+                 <circle cx="7" cy="19" r="2"/>
+                 <circle cx="17" cy="19" r="2"/>
+                 <path d="M3 11V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Surface Level Parking</span>
+            </div>
+
+            {/* Café & Bar */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                 <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                 <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                 <line x1="6" y1="1" x2="6" y2="4"/>
+                 <line x1="10" y1="1" x2="10" y2="4"/>
+                 <line x1="14" y1="1" x2="14" y2="4"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Café & Bar</span>
+            </div>
+
+            {/* Multipurpose Hall */}
+            <div className="flex flex-col items-center group cursor-pointer">
+               <svg className="w-16 h-16 md:w-20 md:h-20 mb-4 text-[#dfae75] group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M4 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+                  <path d="M7 20c0-2.8 2.2-5 5-5s5 2.2 5 5"/>
+                  <path d="M2 20h20"/>
+                  <path d="M12 9V5"/>
+                  <path d="M12 5l-2 2"/>
+                  <path d="M12 5l2 2"/>
+               </svg>
+               <span className="text-white text-xs md:text-sm uppercase tracking-widest font-medium text-center">Multipurpose Hall</span>
             </div>
 
           </div>
@@ -616,55 +816,119 @@ const ProjectLanding = () => {
       {/* ================= LOCATION ADVANTAGE SECTION ================= */}
       <section className="bg-[#1c1915] py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            
-            {/* Left Box - Map */}
-             <div className="w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14033.801083313045!2d77.04795670573557!3d28.43584006236011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1888054e2d75%3A0xa49245f339865ca2!2sSector%2046%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1766984408527!5m2!1sen!2sin" 
-                  width="100%" 
-                  height="100%" 
-                  style={{border:0}} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="rounded-lg shadow-2xl transition-all duration-500"
-                ></iframe>
-             </div>
+          
+          {/* Section Title */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-serif text-[#dfae75] uppercase tracking-widest mb-4">
+              LOCATION <span className="text-[#e4b57b]">ADVANTAGE</span>
+            </h2>
+            <p className="text-gray-400 text-lg italic">"Curious to know what's inside? You & your happy life!"</p>
+          </div>
 
-             {/* Right Content - Location list */}
-             <div className="w-full lg:w-1/2 space-y-6">
-                <h2 className="text-3xl md:text-4xl text-[#dfae75] uppercase tracking-widest mb-8">
-                  LOCATION <span className="text-[#e4b57b]">ADVANTAGE</span>
-                </h2>
-                
-                <ul className="space-y-4 text-gray-300 font-light text-sm md:text-base">
-                  <li className="flex items-start">
-                    <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                    <span>IGI Airport: Around 25-30 minutes</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                    <span>HUDA City Centre Metro Station: Around 5-10 minutes, convenient metro connectivity</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                    <span>NH-48: Around 5-10 minutes, with easy connectivity to Delhi and other areas of NCR.</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                    <span>Sohna Road: Around 10-15 minutes distance</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                    <span>Udyog Vihar: Around 15-20 minutes distance</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#dfae75] mr-3 mt-1">•</span>
-                    <span>Cyber City: Around 15-20 minutes distance</span>
-                  </li>
-                </ul>
-             </div>
+          {/* Map */}
+          <div className="w-full max-w-5xl mx-auto h-[350px] md:h-[450px] mb-12">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.3966175282417!2d77.0530996!3d28.437458099999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19002b67be4d%3A0x3de978035c482907!2sShapoorji%20Pallonji%20Dualis!5e0!3m2!1sen!2sin!4v1766993248457!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{border:0}} 
+              allowFullScreen="" 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="rounded-lg shadow-2xl"
+            ></iframe>
+          </div>
+
+          {/* Location Categories Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            {/* Weekend Essentials */}
+            <div className="bg-[#242b2e] p-6 rounded-lg border border-[#dfae75]/20 hover:border-[#dfae75]/40 transition-colors">
+              <h3 className="text-xl md:text-2xl text-[#dfae75] font-bold mb-4 uppercase tracking-wide border-b border-[#dfae75]/30 pb-2">
+                Weekend Essentials
+              </h3>
+              <ul className="space-y-2 text-gray-300 font-light text-sm md:text-base">
+                <li className="flex justify-between items-center py-1">
+                  <span>Raheja Mall</span>
+                  <span className="text-[#e4b57b] font-semibold">5 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Taj City Centre</span>
+                  <span className="text-[#e4b57b] font-semibold">11 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>IKEA Mall (Upcoming)</span>
+                  <span className="text-[#e4b57b] font-semibold">2 min</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Schools */}
+            <div className="bg-[#242b2e] p-6 rounded-lg border border-[#dfae75]/20 hover:border-[#dfae75]/40 transition-colors">
+              <h3 className="text-xl md:text-2xl text-[#dfae75] font-bold mb-4 uppercase tracking-wide border-b border-[#dfae75]/30 pb-2">
+                Schools
+              </h3>
+              <ul className="space-y-2 text-gray-300 font-light text-sm md:text-base">
+                <li className="flex justify-between items-center py-1">
+                  <span>Manav Rachna</span>
+                  <span className="text-[#e4b57b] font-semibold">4 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Amity International</span>
+                  <span className="text-[#e4b57b] font-semibold">7 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Scottish High International</span>
+                  <span className="text-[#e4b57b] font-semibold">18 min</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Hospitals */}
+            <div className="bg-[#242b2e] p-6 rounded-lg border border-[#dfae75]/20 hover:border-[#dfae75]/40 transition-colors">
+              <h3 className="text-xl md:text-2xl text-[#dfae75] font-bold mb-4 uppercase tracking-wide border-b border-[#dfae75]/30 pb-2">
+                Multi-Speciality Hospitals
+              </h3>
+              <ul className="space-y-2 text-gray-300 font-light text-sm md:text-base">
+                <li className="flex justify-between items-center py-1">
+                  <span>Medanta Medicity</span>
+                  <span className="text-[#e4b57b] font-semibold">4 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Fortis Hospital</span>
+                  <span className="text-[#e4b57b] font-semibold">10 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Artemis Hospital</span>
+                  <span className="text-[#e4b57b] font-semibold">10 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Max Hospital</span>
+                  <span className="text-[#e4b57b] font-semibold">12 min</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Business Districts */}
+            <div className="bg-[#242b2e] p-6 rounded-lg border border-[#dfae75]/20 hover:border-[#dfae75]/40 transition-colors">
+              <h3 className="text-xl md:text-2xl text-[#dfae75] font-bold mb-4 uppercase tracking-wide border-b border-[#dfae75]/30 pb-2">
+                Business Districts
+              </h3>
+              <ul className="space-y-2 text-gray-300 font-light text-sm md:text-base">
+                <li className="flex justify-between items-center py-1">
+                  <span>Unitech Business Park</span>
+                  <span className="text-[#e4b57b] font-semibold">3 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>Cyber City</span>
+                  <span className="text-[#e4b57b] font-semibold">18 min</span>
+                </li>
+                <li className="flex justify-between items-center py-1">
+                  <span>IFC</span>
+                  <span className="text-[#e4b57b] font-semibold">10 min</span>
+                </li>
+              </ul>
+            </div>
 
           </div>
         </div>
@@ -739,6 +1003,7 @@ const ProjectLanding = () => {
       </section>
 
       <ContactPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
+      <VideoPopup isOpen={isVideoPopupOpen} onClose={() => setIsVideoPopupOpen(false)} />
     </div>
   );
 };
@@ -848,6 +1113,37 @@ const GalleryCarousel = () => {
 };
 
 export default ProjectLanding;
+
+// Video Popup Component
+const VideoPopup = ({ isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm" onClick={onClose}>
+      <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+        {/* Close Button */}
+        <button 
+          onClick={onClose}
+          className="absolute -top-12 right-0 text-white hover:text-[#dfae75] transition-colors text-4xl font-bold"
+        >
+          ×
+        </button>
+        
+        {/* Video Container */}
+        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+          <iframe 
+            className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
+            src="https://www.youtube.com/embed/Jq3gozsFvkM?autoplay=1"
+            title="Shapoorji Pallonji Dualis Video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const ContactPopup = ({ isOpen, onClose }) => {
   const popupNameRef = useRef(null);
