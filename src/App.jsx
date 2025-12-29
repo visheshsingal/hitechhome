@@ -24,6 +24,7 @@ import "./styles/index.css";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
+import ProjectLanding from "./pages/ProjectLanding";
 import { useEffect } from "react";
 
 function App() {
@@ -90,6 +91,8 @@ function App() {
         );
       case "admin-enquiries":
         return <AdminEnquiries setCurrentPage={setCurrentPage} />;
+      case "project":
+        return <ProjectLanding />;
       default:
         return (
           <Home
@@ -119,6 +122,8 @@ function App() {
           return "privacy-policy";
         case "/terms-conditions":
           return "terms-conditions";
+        case "/project":
+          return "project";
         default:
           return "home";
       }
@@ -148,6 +153,7 @@ function App() {
     "add-property",
     "edit-property",
     "admin-enquiries",
+    "project",
   ].includes(currentPage);
   const showFooter = ![
     "admin-login",
@@ -155,6 +161,7 @@ function App() {
     "add-property",
     "edit-property",
     "admin-enquiries",
+    "project",
   ].includes(currentPage);
 
   return (
@@ -170,14 +177,14 @@ function App() {
                   />
                 )}
                 {/* Site-wide right-side social icons */}
-                <SocialBar />
+                {currentPage !== "project" && <SocialBar />}
                 <ErrorBoundary>
                   {renderPage()}
                 </ErrorBoundary>
                 {showFooter && <Footer setCurrentPage={setCurrentPage} />}
               <ChatBot />
               <FloatingWhatsApp />
-              <TimedWhatsAppPopup />
+              {currentPage !== "project" && <TimedWhatsAppPopup />}
             </div>
           </EnquiryProvider>
         </PropertyProvider>
