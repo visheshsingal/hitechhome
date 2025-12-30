@@ -1203,10 +1203,12 @@ const VideoPopup = ({ isOpen, onClose, videoData }) => {
           ) : (
             <video 
               autoPlay 
+              muted
+              playsInline
               controls 
+              src={videoData.src}
               className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl border-2 border-[#dfae75]/20"
             >
-              <source src={videoData.src} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           )}
