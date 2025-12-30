@@ -4,7 +4,10 @@ import logo from '../assets/logo1.png';
 const ProjectLanding = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isVideoPopupOpen, setIsVideoPopupOpen] = useState(false);
-  const [activeVideo, setActiveVideo] = useState({ type: 'youtube', src: 'Jq3gozsFvkM' });
+  const [activeVideo, setActiveVideo] = useState({ 
+    type: 'cloudinary', 
+    src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
+  });
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   
   // Hero form refs
@@ -179,7 +182,10 @@ const ProjectLanding = () => {
             {/* Watch Video Button */}
             <button 
               onClick={() => {
-                setActiveVideo({ type: 'youtube', src: 'Jq3gozsFvkM' });
+                setActiveVideo({ 
+                  type: 'cloudinary', 
+                  src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
+                });
                 setIsVideoPopupOpen(true);
               }}
               className="w-full mt-3 sm:mt-4 bg-[#dfae75]/10 backdrop-blur-sm border border-[#dfae75]/30 text-[#dfae75] font-bold py-2.5 sm:py-3 rounded-lg uppercase tracking-wider text-xs sm:text-sm hover:bg-[#dfae75]/20 transition-all duration-300 flex items-center justify-center gap-2"
@@ -368,7 +374,10 @@ const ProjectLanding = () => {
           <div className="max-w-2xl mx-auto px-4">
             <div 
               onClick={() => {
-                setActiveVideo({ type: 'local', src: '/reel7.mp4' });
+                setActiveVideo({ 
+                  type: 'cloudinary', 
+                  src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
+                });
                 setIsVideoPopupOpen(true);
               }}
               className="relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl border-4 border-[#dfae75]/30 hover:border-[#dfae75]/60 transition-all duration-300"
@@ -391,7 +400,10 @@ const ProjectLanding = () => {
             <div className="text-center mt-6">
                <button 
                  onClick={() => {
-                   setActiveVideo({ type: 'local', src: '/reel7.mp4' });
+                   setActiveVideo({ 
+                     type: 'cloudinary', 
+                     src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
+                   });
                    setIsVideoPopupOpen(true);
                  }}
                  className="text-[#dfae75] font-bold uppercase tracking-widest text-sm hover:underline"
@@ -1199,6 +1211,14 @@ const VideoPopup = ({ isOpen, onClose, videoData }) => {
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+            ></iframe>
+          ) : videoData.type === 'cloudinary' ? (
+            <iframe
+              src={videoData.src}
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl border-2 border-[#dfae75]/20"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allowFullScreen
+              frameBorder="0"
             ></iframe>
           ) : (
             <video 
