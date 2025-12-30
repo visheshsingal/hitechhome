@@ -289,9 +289,67 @@ const ProjectLanding = () => {
             </div>
 
           </div>
+        </div>
+      </section>
 
-          {/* ================= HIGHLIGHTS SECTION ================= */}
-          <div className="flex flex-col-reverse lg:flex-row items-center gap-12 mt-20 md:mt-32">
+      {/* ================= VIDEO SHOWCASE SECTION ================= */}
+      <section className="bg-black py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl font-serif text-[#dfae75] uppercase tracking-widest mb-4">
+              Experience <span className="text-[#e4b57b]">THE DUALIS</span>
+            </h2>
+            <p className="text-gray-400 text-lg">Watch our exclusive project showcase</p>
+          </div>
+
+          <div className="max-w-2xl mx-auto px-4">
+            <div 
+              onClick={() => {
+                setActiveVideo({ 
+                  type: 'cloudinary', 
+                  src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
+                });
+                setIsVideoPopupOpen(true);
+              }}
+              className="relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl border-4 border-[#dfae75]/30 hover:border-[#dfae75]/60 transition-all duration-300"
+            >
+              <div className="aspect-video w-full relative">
+                <img 
+                  src="http://shapoorjidualis.com/img/g1.jpg" 
+                  alt="Project Video" 
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-[#dfae75] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-black fill-current translate-x-1" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mt-6">
+               <button 
+                 onClick={() => {
+                   setActiveVideo({ 
+                     type: 'cloudinary', 
+                     src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
+                   });
+                   setIsVideoPopupOpen(true);
+                 }}
+                 className="text-[#dfae75] font-bold uppercase tracking-widest text-sm hover:underline"
+               >
+                 Click to Watch Full Video
+               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= HIGHLIGHTS SECTION ================= */}
+      <section className="bg-[#1c1915] py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-12">
             
             {/* Left Image */}
             <div className="w-full lg:w-1/2">
@@ -356,64 +414,11 @@ const ProjectLanding = () => {
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ================= VIDEO SHOWCASE SECTION ================= */}
-      <section className="bg-black py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-serif text-[#dfae75] uppercase tracking-widest mb-4">
-              Experience <span className="text-[#e4b57b]">THE DUALIS</span>
-            </h2>
-            <p className="text-gray-400 text-lg">Watch our exclusive project showcase</p>
-          </div>
 
-          <div className="max-w-2xl mx-auto px-4">
-            <div 
-              onClick={() => {
-                setActiveVideo({ 
-                  type: 'cloudinary', 
-                  src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
-                });
-                setIsVideoPopupOpen(true);
-              }}
-              className="relative group cursor-pointer rounded-xl overflow-hidden shadow-2xl border-4 border-[#dfae75]/30 hover:border-[#dfae75]/60 transition-all duration-300"
-            >
-              <div className="aspect-video w-full relative">
-                <img 
-                  src="http://shapoorjidualis.com/img/g1.jpg" 
-                  alt="Project Video" 
-                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-[#dfae75] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-black fill-current translate-x-1" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="text-center mt-6">
-               <button 
-                 onClick={() => {
-                   setActiveVideo({ 
-                     type: 'cloudinary', 
-                     src: 'https://player.cloudinary.com/embed/?cloud_name=dewaaz2si&public_id=reel7_oiaoud&profile=cld-default' 
-                   });
-                   setIsVideoPopupOpen(true);
-                 }}
-                 className="text-[#dfae75] font-bold uppercase tracking-widest text-sm hover:underline"
-               >
-                 Click to Watch Full Video
-               </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ================= FLASH SALE SECTION ================= */}
       <section className="relative bg-gradient-to-br from-[#1a1816] via-[#242b2e] to-[#1a1816] py-16 md:py-20 overflow-hidden">
