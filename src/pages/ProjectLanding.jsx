@@ -63,7 +63,7 @@ const ProjectLanding = () => {
       </nav>
       
       {/* ================= HERO SECTION ================= */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full min-h-screen lg:h-screen flex flex-col">
         {/* Background Images with Auto Slide */}
         {heroImages.map((img, index) => (
           <div 
@@ -75,66 +75,66 @@ const ProjectLanding = () => {
               backgroundImage: `url('${img}')`,
             }}
           >
-            <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-[3px]"></div>
           </div>
         ))}
-
+ 
         {/* Main Content */}
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10">
+        <div className="relative z-10 container mx-auto px-4 py-6 lg:py-0 flex-grow flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-6 lg:gap-10">
           
           {/* Left Text Content */}
-          <div className="w-full lg:w-3/5 space-y-6 animate-fade-in-up mt-10 lg:mt-0 order-1 lg:order-1">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide leading-tight text-[#fdf8e8]">
+          <div className="w-full lg:w-3/5 space-y-4 md:space-y-6 animate-fade-in-up mt-2 lg:mt-0 order-1">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide leading-tight text-[#fdf8e8]">
               SHAPOORJI PALLONJI DUALIS
             </h1>
             
-            <h2 className="text-2xl md:text-3xl font-light tracking-wide">
+            <h2 className="text-lg sm:text-xl md:text-3xl font-light tracking-wide italic text-gray-200">
               In Sector 46 Gurgaon
             </h2>
             
-            <div className="w-fit bg-[#dfae75] text-black px-4 py-2 text-sm md:text-base font-bold uppercase tracking-wider">
+            <div className="w-fit bg-[#dfae75] text-black px-3 py-1.5 md:px-4 md:py-2 text-[10px] sm:text-xs md:text-base font-bold uppercase tracking-wider rounded-sm">
               EXCLUSIVE 3 & 4 BHK LUXURY UNITS
             </div>
             
-            <div className="bg-[#e4b57b] bg-opacity-90 text-black px-6 py-3 w-fit font-bold text-lg md:text-xl tracking-wider rounded-r-md">
+            <div className="bg-[#e4b57b] bg-opacity-95 text-black px-4 py-2 md:px-6 md:py-3 w-fit font-bold text-xs sm:text-sm md:text-xl tracking-wider rounded-sm shadow-xl border-l-4 border-black/20">
                FLASH SALE: ₹24,000/sq.ft (3BHK) | ₹25,000/sq.ft (4BHK)
             </div>
-
+ 
             {/* Features List - Hidden on mobile, shown on desktop */}
-            <ul className="hidden lg:flex lg:flex-col space-y-2 mt-8 text-sm md:text-base font-medium text-gray-100/90">
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
+            <ul className="hidden lg:flex lg:flex-col space-y-3 mt-8 text-base font-medium text-gray-100/90">
+               <li className="flex items-center space-x-3">
+                  <span className="text-[#dfae75] text-xl">✓</span>
                   <span>Twin Tower Concept with only 198 Units</span>
                </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
+               <li className="flex items-center space-x-3">
+                  <span className="text-[#dfae75] text-xl">✓</span>
                   <span>Exclusive Tower for 4 BHK</span>
                </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
+               <li className="flex items-center space-x-3">
+                  <span className="text-[#dfae75] text-xl">✓</span>
                   <span>G+40 Tower Height</span>
                </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
+               <li className="flex items-center space-x-3">
+                  <span className="text-[#dfae75] text-xl">✓</span>
                   <span>4 Level Basement + 4 Level Podium Parking</span>
                </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
+               <li className="flex items-center space-x-3">
+                  <span className="text-[#dfae75] text-xl">✓</span>
                   <span>Special 20:80 Festive Payment Plan</span>
                </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
+               <li className="flex items-center space-x-3">
+                  <span className="text-[#dfae75] text-xl">✓</span>
                   <span>Clubhouse with Modern Amenities</span>
                </li>
             </ul>
-
-            <div className="hidden lg:block pt-6 text-2xl md:text-4xl font-serif text-white/50 italic">
+ 
+            <div className="hidden lg:block pt-6 text-2xl md:text-4xl font-serif text-white/40 italic">
               Artist's Impression
             </div>
           </div>
-
+ 
           {/* Right Form */}
-          <div className="w-full lg:w-1/3 bg-black/60 backdrop-blur-md p-6 md:p-8 rounded-lg border border-white/10 shadow-2xl order-2 lg:order-2">
+          <div className="w-full lg:w-1/3 bg-black/60 backdrop-blur-md p-6 md:p-8 rounded-lg border border-white/10 shadow-2xl order-2">
             <h3 className="text-2xl font-semibold mb-6">Get in touch with us.</h3>
             
             <form onSubmit={handleHeroSubmit} className="space-y-6">
@@ -175,57 +175,61 @@ const ProjectLanding = () => {
                 Submit
               </button>
             </form>
-
+ 
             {/* Watch Video Button */}
             <button 
               onClick={() => {
                 setActiveVideo({ type: 'youtube', src: 'Jq3gozsFvkM' });
                 setIsVideoPopupOpen(true);
               }}
-              className="w-full mt-4 bg-white/10 backdrop-blur-sm border-2 border-[#dfae75] text-white font-bold py-3 uppercase tracking-wider hover:bg-[#dfae75] hover:text-black transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full mt-3 sm:mt-4 bg-[#dfae75]/10 backdrop-blur-sm border border-[#dfae75]/30 text-[#dfae75] font-bold py-2.5 sm:py-3 rounded-lg uppercase tracking-wider text-xs sm:text-sm hover:bg-[#dfae75]/20 transition-all duration-300 flex items-center justify-center gap-2"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
               Watch Video
             </button>
           </div>
-
+ 
           {/* Features List - Shown on mobile below form */}
-          <div className="w-full lg:hidden space-y-6 order-3">
-            <ul className="space-y-2 text-sm font-medium text-gray-100/90">
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
-                  <span>Twin Tower Concept with only 198 Units</span>
-               </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
-                  <span>Exclusive Tower for 4 BHK</span>
-               </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
-                  <span>G+40 Tower Height</span>
-               </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
-                  <span>4 Level Basement + 4 Level Podium Parking</span>
-               </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
-                  <span>Special 20:80 Festive Payment Plan</span>
-               </li>
-               <li className="flex items-center space-x-2">
-                  <span className="text-[#dfae75]">✓</span>
-                  <span>Clubhouse with Modern Amenities</span>
-               </li>
-            </ul>
+          <div className="w-full lg:hidden pb-6 order-3">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <li className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                   <span className="text-[#dfae75]">✓</span>
+                   <span className="text-[10px] sm:text-xs">Twin Tower (198 Units)</span>
+                </li>
+                <li className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                   <span className="text-[#dfae75]">✓</span>
+                   <span className="text-[10px] sm:text-xs">Exclusive 4 BHK Tower</span>
+                </li>
+                <li className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                   <span className="text-[#dfae75]">✓</span>
+                   <span className="text-[10px] sm:text-xs">G+40 Tower Height</span>
+                </li>
+                <li className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                   <span className="text-[#dfae75]">✓</span>
+                   <span className="text-[10px] sm:text-xs">8 Level Parking</span>
+                </li>
+                <li className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                   <span className="text-[#dfae75]">✓</span>
+                   <span className="text-[10px] sm:text-xs">20:80 Payment Plan</span>
+                </li>
+                <li className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg border border-white/10">
+                   <span className="text-[#dfae75]">✓</span>
+                   <span className="text-[10px] sm:text-xs">Modern Clubhouse</span>
+                </li>
+             </div>
           </div>
         </div>
-
-        {/* Floating Scroll Indicator */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          <div className="w-8 h-1 bg-white rounded-full opacity-100"></div>
-          <div className="w-8 h-1 bg-white rounded-full opacity-50"></div>
+ 
+        {/* Floating Scroll Indicator - Hidden on mobile if needed, or kept */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 hidden lg:flex space-x-2">
+          {heroImages.map((_, idx) => (
+            <div 
+              key={idx}
+              className={`w-8 h-1 rounded-full transition-all duration-300 ${idx === currentHeroImage ? 'bg-[#dfae75] w-12' : 'bg-white/30'}`}
+            ></div>
+          ))}
         </div>
       </section>
 
