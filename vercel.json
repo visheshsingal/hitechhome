@@ -1,8 +1,7 @@
 {
   "rewrites": [
-    { "handle": "filesystem" },
     {
-      "source": "/(.*)",
+      "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
   ]
